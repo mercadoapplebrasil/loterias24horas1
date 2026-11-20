@@ -109,7 +109,7 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
   <div class="w">
     <p class="eye">Bolões registrados na Caixa · cotas físicas e on-line</p>
     <h1>Seu bolão garantido, a qualquer hora do dia.</h1>
-    <p class="lead">Mega-Sena, +Milionária, Quina, Loteca e Mega da Virada. Escolha o bolão, garanta sua cota e acompanhe o resultado com a gente.</p>
+    <p class="lead">Mega-Sena, +Milionária, Quina, Loteca, Dupla Sena, Timemania e Mega da Virada. Escolha o bolão, garanta sua cota e acompanhe o resultado com a gente.</p>
     <div class="btns">
       <a class="btn p" data-wa="Olá! Quero reservar uma cota de bolão." href="#como">Reservar pelo WhatsApp</a>
       <a class="btn s" data-cx href="#como">Comprar on-line</a>
@@ -184,14 +184,19 @@ var CONFIG = {
       "Um dos jogos acertou 4 números, o que vale 6 quadras"
     ]
   },
-  atualizado: "20/11/2026, às 19h40"
+  atualizado: "20/11/2026, às 19h45"
 };
 var BOLOES = [
-  {nome:"Mega-Sena", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"2 jogos de 8 dezenas", cotas:"Restam 12 de 12 cotas", valor:"R$ 37,80", selo:"Método Eureka"},
-  {nome:"+Milionária", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"3 jogos de 7 dezenas + 2 trevos", cotas:"Restam 7 de 7 cotas", valor:"R$ 24,30", selo:"Poucas cotas"},
   {nome:"Loteca", concurso:"Concurso 1284", cor:"#B42318", premio:"R$ 3,5 milhões", sorteio:"Apostas até sábado, 21/11, às 15h", formato:"14 jogos, com 5 duplos", cotas:"6 cotas", valor:"R$ 14,40", selo:"Bolão de futebol", online:false},
-  {nome:"Quina Friday · A", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 9 dezenas", cotas:"12 cotas", valor:"R$ 35,43", selo:"Preço de Black Friday · abre sábado, 21/11", online:false},
-  {nome:"Quina Friday · B", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 10 dezenas", cotas:"14 cotas", valor:"R$ 60,75", selo:"Preço de Black Friday · abre sábado, 21/11", online:false}
+  {nome:"Mega-Sena · A", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"2 jogos de 8 dezenas", cotas:"Restam 12 de 12 cotas", valor:"R$ 37,80", selo:"Método Eureka"},
+  {nome:"Mega-Sena · B", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 10 de 10 cotas", valor:"R$ 22,68", selo:""},
+  {nome:"+Milionária · A", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"3 jogos de 7 dezenas + 2 trevos", cotas:"Restam 7 de 7 cotas", valor:"R$ 24,30", selo:"Poucas cotas"},
+  {nome:"+Milionária · B", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"1 jogo de 7 dezenas + 3 trevos", cotas:"Restam 5 de 5 cotas", valor:"R$ 34,05", selo:"Poucas cotas"},
+  {nome:"Dupla Sena", concurso:"Concurso 3035", cor:"#A6193C", premio:"R$ 14,6 milhões", sorteio:"", formato:"1 jogo de 8 dezenas", cotas:"Restam 6 de 6 cotas", valor:"R$ 18,95", selo:"Dois sorteios no mesmo concurso"},
+  {nome:"Timemania", concurso:"Concurso 2471", cor:"#6B5D00", premio:"R$ 29,6 milhões", sorteio:"", formato:"15 jogos de 10 dezenas", cotas:"Restam 5 de 5 cotas", valor:"R$ 14,19", selo:""},
+  {nome:"Quina Friday · 8 dezenas", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 8 de 10 cotas", valor:"R$ 18,90", selo:"Preço de Black Friday"},
+  {nome:"Quina Friday · 9 dezenas", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 9 dezenas", cotas:"12 cotas", valor:"R$ 35,43", selo:"Preço de Black Friday · abre sábado, 21/11", online:false},
+  {nome:"Quina Friday · 10 dezenas", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 10 dezenas", cotas:"14 cotas", valor:"R$ 60,75", selo:"Preço de Black Friday · abre sábado, 21/11", online:false}
 ];
 var VIRADA = [
   {nome:"Bolão 7×7", formato:"7 jogos de 7 dezenas", resta:"Restam 12 de 14 cotas", valor:"R$ 28,35"},
@@ -218,7 +223,7 @@ BOLOES.forEach(function(b){
   h.appendChild(el("b",null,b.nome)); h.appendChild(el("span",null,b.concurso)); c.appendChild(h);
   var body = el("div","b");
   body.appendChild(el("div","d pr",b.premio));
-  body.appendChild(el("div","mut",b.sorteio));
+  if(b.sorteio) body.appendChild(el("div","mut",b.sorteio));
   body.appendChild(el("div",null,b.formato));
   var r = el("div","row"); r.appendChild(el("span","mut",b.cotas)); r.appendChild(el("span","d",b.valor)); body.appendChild(r);
   if(b.selo) body.appendChild(el("div","selo",b.selo));
