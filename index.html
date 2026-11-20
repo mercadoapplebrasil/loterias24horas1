@@ -75,6 +75,8 @@ a.go.alt:hover{background:#EAF0FB}
 .v{background:#fff;color:#14213D;border-radius:12px;padding:14px 16px}
 .v b{display:block;font-size:19px}
 .v .d{font-size:27px;color:#0E7A3E}
+.v .rs{font-size:16px;font-weight:700;color:#9A3412}
+.row .mut{font-weight:700;color:#9A3412}
 .step .n{font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:40px;color:#C2500F;line-height:1}
 .step{background:#fff;border:1px solid #E6DDCB;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px}
 .step b{font-size:21px}
@@ -182,22 +184,22 @@ var CONFIG = {
       "Um dos jogos acertou 4 números, o que vale 6 quadras"
     ]
   },
-  atualizado: "20/11/2026"
+  atualizado: "20/11/2026, às 19h40"
 };
 var BOLOES = [
-  {nome:"Mega-Sena", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"2 jogos de 8 dezenas", cotas:"12 cotas", valor:"R$ 37,80", selo:"Método Eureka"},
-  {nome:"+Milionária", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"3 jogos de 7 dezenas + 2 trevos", cotas:"7 cotas", valor:"R$ 24,30", selo:"Poucas cotas"},
+  {nome:"Mega-Sena", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"2 jogos de 8 dezenas", cotas:"Restam 12 de 12 cotas", valor:"R$ 37,80", selo:"Método Eureka"},
+  {nome:"+Milionária", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"3 jogos de 7 dezenas + 2 trevos", cotas:"Restam 7 de 7 cotas", valor:"R$ 24,30", selo:"Poucas cotas"},
   {nome:"Loteca", concurso:"Concurso 1284", cor:"#B42318", premio:"R$ 3,5 milhões", sorteio:"Apostas até sábado, 21/11, às 15h", formato:"14 jogos, com 5 duplos", cotas:"6 cotas", valor:"R$ 14,40", selo:"Bolão de futebol", online:false},
   {nome:"Quina Friday · A", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 9 dezenas", cotas:"12 cotas", valor:"R$ 35,43", selo:"Preço de Black Friday · abre sábado, 21/11", online:false},
   {nome:"Quina Friday · B", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 10 dezenas", cotas:"14 cotas", valor:"R$ 60,75", selo:"Preço de Black Friday · abre sábado, 21/11", online:false}
 ];
 var VIRADA = [
-  {nome:"Bolão 7×7", formato:"7 jogos de 7 dezenas", valor:"R$ 28,35"},
-  {nome:"Bolão 2×8", formato:"2 jogos de 8 dezenas", valor:"R$ 32,40"},
-  {nome:"Bolão 3×8", formato:"3 jogos de 8 dezenas", valor:"R$ 40,01"},
-  {nome:"Bolão 10 dezenas", formato:"1 jogo de 10 dezenas", valor:"R$ 100,05"},
-  {nome:"VIP 10", formato:"1 jogo de 10 dezenas · 10 cotas", valor:"R$ 170,10"},
-  {nome:"Elite 11", formato:"1 jogo de 11 dezenas", valor:"R$ 220,12"}
+  {nome:"Bolão 7×7", formato:"7 jogos de 7 dezenas", resta:"Restam 12 de 14 cotas", valor:"R$ 28,35"},
+  {nome:"Bolão 2×8", formato:"2 jogos de 8 dezenas", resta:"Restam 13 de 14 cotas", valor:"R$ 32,40"},
+  {nome:"Bolão 3×8", formato:"3 jogos de 8 dezenas", resta:"Restam 16 de 17 cotas", valor:"R$ 40,01"},
+  {nome:"Bolão 10 dezenas", formato:"1 jogo de 10 dezenas", resta:"Restam 13 de 17 cotas", valor:"R$ 100,05"},
+  {nome:"VIP 10", formato:"1 jogo de 10 dezenas", resta:"Restam 6 de 10 cotas", valor:"R$ 170,10"},
+  {nome:"Elite 11", formato:"1 jogo de 11 dezenas", resta:"Restam 11 de 17 cotas", valor:"R$ 220,12"}
 ];
 /* ====== FIM DA EDIÇÃO ====== */
 
@@ -231,7 +233,7 @@ BOLOES.forEach(function(b){
 
 var lv = document.getElementById("listaVirada");
 VIRADA.forEach(function(v){
-  var d = el("div","v"); d.appendChild(el("b",null,v.nome)); d.appendChild(el("div","mut",v.formato)); d.appendChild(el("div","d",v.valor)); lv.appendChild(d);
+  var d = el("div","v"); d.appendChild(el("b",null,v.nome)); d.appendChild(el("div","mut",v.formato)); if(v.resta) d.appendChild(el("div","rs",v.resta)); d.appendChild(el("div","d",v.valor)); lv.appendChild(d);
 });
 
 var rc = document.getElementById("rodapeContato");
