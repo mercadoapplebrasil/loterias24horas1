@@ -36,9 +36,12 @@ h1{margin:0 0 18px;font-size:clamp(36px,7vw,66px);line-height:1.05;max-width:900
 .btn.p:hover{background:#F58E55}
 .btn.s{border:2px solid #fff;color:#fff}
 .btn.s:hover{background:#fff;color:#163A8F}
-.stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:36px}
-.stats .d{font-size:34px;color:#FFC9A8}
-.stats small{font-size:16px;color:#DCE4F7}
+.premio{margin-top:36px;background:#0E2766;border:1px solid #2D4FA8;border-radius:16px;padding:24px;max-width:640px}
+.premio .eye{margin-bottom:6px}
+.premio .pv{font-size:44px;line-height:1.1;color:#FFC9A8}
+.premio .pt{font-weight:700;font-size:20px;margin:4px 0 12px}
+.premio ul{margin:0;padding-left:22px;color:#DCE4F7;font-size:18px}
+.premio li{margin-bottom:6px}
 section.w{padding-top:60px;padding-bottom:20px}
 h2{margin:0 0 8px;font-size:clamp(32px,5vw,44px);line-height:1.1}
 .sub{margin:0 0 28px;color:#4A5468}
@@ -109,9 +112,11 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
       <a class="btn p" data-wa="Olá! Quero reservar uma cota de bolão." href="#como">Reservar pelo WhatsApp</a>
       <a class="btn s" data-cx href="#como">Comprar on-line</a>
     </div>
-    <div class="stats">
-      <div><div class="d" id="placar"></div><small>último prêmio pago: quadra na Mega-Sena 3083</small></div>
-      <div><div class="d">5 modalidades</div><small>de bolão toda semana</small></div>
+    <div class="premio" aria-label="Último prêmio pago">
+      <p class="eye">Último prêmio pago</p>
+      <div class="d pv" id="pValor"></div>
+      <div class="pt" id="pTitulo"></div>
+      <ul id="pLinhas"></ul>
     </div>
   </div>
 </div>
@@ -168,7 +173,17 @@ var CONFIG = {
   whatsapp: "5511914819638",           // só números com DDI e DDD, ex.: "5519999998888". Vazio = sem botão de WhatsApp
   instagram: "lotoavenidapirassununga",
   linkCaixa: "https://www.loteriasonline.caixa.gov.br/silce-web/#/bolao-caixa/001926",
-  placar: "R$ 3.895,02",
+  premio: {
+    valor: "R$ 3.895,02",
+    titulo: "Quadra na Mega-Sena · Concurso 3083 · 08/11/2026",
+    linhas: [
+      "Bolão: 2 jogos de 8 dezenas",
+      "14 cotas de R$ 32,40",
+      "Um dos jogos acertou 4 números, o que vale 6 quadras",
+      "6 quadras de R$ 649,17 cada",
+      "R$ 278,21 para cada cota"
+    ]
+  },
   atualizado: "20/11/2026"
 };
 var BOLOES = [
@@ -191,7 +206,9 @@ var VIRADA = [
 function el(tag, cls, txt){var e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e;}
 function wa(msg){return "https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(msg);}
 
-document.getElementById("placar").textContent = CONFIG.placar;
+document.getElementById("pValor").textContent = CONFIG.premio.valor;
+document.getElementById("pTitulo").textContent = CONFIG.premio.titulo;
+CONFIG.premio.linhas.forEach(function(t){ document.getElementById("pLinhas").appendChild(el("li",null,t)); });
 document.getElementById("atualizado").textContent = "Atualizado em " + CONFIG.atualizado + ".";
 
 var lb = document.getElementById("listaBoloes");
