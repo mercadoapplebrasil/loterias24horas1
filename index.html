@@ -90,6 +90,15 @@ a.go.alt:hover{background:#EAF0FB}
 .v .d{font-size:27px;color:#0E7A3E}
 .v .rs{font-size:16px;font-weight:700;color:#9A3412}
 .row .mut{font-weight:700;color:#9A3412}
+.grupo{margin-bottom:34px}
+.gtopo{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid #BFE0C8}
+.gtopo h3{margin:0;font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:22px;color:#0B3D24}
+.row{gap:10px}
+.row .d{white-space:nowrap}
+.cd{background:#0E7A3E;color:#fff;font-weight:700;font-size:17px;padding:8px 14px;border-radius:999px;white-space:nowrap}
+.cd.urg{background:#B42318;animation:pisca2 1.2s ease-in-out infinite}
+@keyframes pisca2{50%{opacity:.7}}
+@media(prefers-reduced-motion:reduce){.cd.urg{animation:none}}
 .step .n{font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:40px;color:#C2500F;line-height:1}
 .step{background:#fff;border:1px solid #E6DDCB;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px}
 .step b{font-size:21px}
@@ -273,7 +282,7 @@ footer a{color:#F5D77A}
 <section class="w" id="boloes">
   <h2>Bolões da semana</h2>
   <p class="sub">Valor da cota no balcão. Na compra on-line, a Caixa cobra uma pequena tarifa de serviço. <span id="atualizado"></span></p>
-  <div class="grid" id="listaBoloes"></div>
+  <div id="listaBoloes"></div>
 </section>
 
 <section class="w" id="virada">
@@ -338,13 +347,13 @@ var CONFIG = {
   atualizado: "20/11/2026, às 19h45"
 };
 var BOLOES = [
-  {nome:"Mega-Sena · A", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"2 jogos de 8 dezenas", cotas:"Restam 12 de 12 cotas", valor:"R$ 37,80", selo:""},
-  {nome:"Mega-Sena · B", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 10 de 10 cotas", valor:"R$ 22,68", selo:""},
-  {nome:"+Milionária · A", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"3 jogos de 7 dezenas + 2 trevos", cotas:"Restam 7 de 7 cotas", valor:"R$ 24,30", selo:"Poucas cotas"},
-  {nome:"+Milionária · B", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"1 jogo de 7 dezenas + 3 trevos", cotas:"Restam 5 de 5 cotas", valor:"R$ 34,05", selo:"Poucas cotas"},
-  {nome:"Dupla Sena", concurso:"Concurso 3035", cor:"#A6193C", premio:"R$ 14,6 milhões", sorteio:"", formato:"1 jogo de 8 dezenas", cotas:"Restam 6 de 6 cotas", valor:"R$ 18,95", selo:"Dois sorteios no mesmo concurso"},
-  {nome:"Timemania", concurso:"Concurso 2471", cor:"#6B5D00", premio:"R$ 29,6 milhões", sorteio:"", formato:"15 jogos de 10 dezenas", cotas:"Restam 5 de 5 cotas", valor:"R$ 14,19", selo:""},
-  {nome:"Quina Friday", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 8 de 10 cotas", valor:"R$ 18,90", selo:"Preço de Black Friday"}
+  {quando:"2026-11-22T11:00:00-03:00", nome:"Mega-Sena · A", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"2 jogos de 8 dezenas", cotas:"Restam 12 de 12 cotas", valor:"R$ 37,80", selo:""},
+  {quando:"2026-11-22T11:00:00-03:00", nome:"Mega-Sena · B", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 10 de 10 cotas", valor:"R$ 22,68", selo:""},
+  {quando:"2026-11-23T21:00:00-03:00", nome:"+Milionária · A", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"3 jogos de 7 dezenas + 2 trevos", cotas:"Restam 7 de 7 cotas", valor:"R$ 24,30", selo:"Poucas cotas"},
+  {quando:"2026-11-23T21:00:00-03:00", nome:"+Milionária · B", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"1 jogo de 7 dezenas + 3 trevos", cotas:"Restam 5 de 5 cotas", valor:"R$ 34,05", selo:"Poucas cotas"},
+  {quando:"2026-11-23T21:00:00-03:00", nome:"Dupla Sena", concurso:"Concurso 3035", cor:"#A6193C", premio:"R$ 14,6 milhões", sorteio:"", formato:"1 jogo de 8 dezenas", cotas:"Restam 6 de 6 cotas", valor:"R$ 18,95", selo:"Dois sorteios no mesmo concurso"},
+  {quando:"2026-11-22T11:00:00-03:00", nome:"Timemania", concurso:"Concurso 2471", cor:"#6B5D00", premio:"R$ 29,6 milhões", sorteio:"", formato:"15 jogos de 10 dezenas", cotas:"Restam 5 de 5 cotas", valor:"R$ 14,19", selo:""},
+  {quando:"2026-11-29T11:00:00-03:00", nome:"Quina Friday", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 8 de 10 cotas", valor:"R$ 18,90", selo:"Preço de Black Friday"}
 ];
 var VIRADA = [
   {nome:"Bolão 7×7", formato:"7 jogos de 7 dezenas", resta:"Restam 12 de 14 cotas", valor:"R$ 28,35"},
@@ -372,13 +381,17 @@ document.addEventListener("keydown", function(e){ if(e.key === "Escape") menu(fa
 document.addEventListener("click", function(e){ if(!e.target.closest("header")) menu(false); });
 
 var lb = document.getElementById("listaBoloes");
-BOLOES.forEach(function(b){
+var DIAS=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+function dd(n){return (n<10?"0":"")+n;}
+function rotulo(d){ var l=new Date(d.getTime()-3*3600e3); return DIAS[l.getUTCDay()]+", "+dd(l.getUTCDate())+"/"+dd(l.getUTCMonth()+1)+" · sorteio "+l.getUTCHours()+"h"+(l.getUTCMinutes()?dd(l.getUTCMinutes()):""); }
+function falta(ms){ if(ms<=0) return null; var m=Math.floor(ms/60000), d=Math.floor(m/1440), h=Math.floor(m%1440/60), mi=m%60;
+  if(d>0) return d+(d>1?" dias, ":" dia, ")+h+"h e "+dd(mi)+"min"; if(h>0) return h+"h "+dd(mi)+"min"; return mi+" min"; }
+function card(b){
   var c = el("article","card");
   var h = el("div","h"); h.style.background=b.cor;
   h.appendChild(el("b",null,b.nome)); h.appendChild(el("span",null,b.concurso)); c.appendChild(h);
   var body = el("div","b");
   body.appendChild(el("div","d pr",b.premio));
-  if(b.sorteio) body.appendChild(el("div","mut",b.sorteio));
   body.appendChild(el("div",null,b.formato));
   var r = el("div","row"); r.appendChild(el("span","mut",b.cotas)); r.appendChild(el("span","d",b.valor)); body.appendChild(r);
   if(b.selo) body.appendChild(el("div","selo",b.selo));
@@ -387,9 +400,26 @@ BOLOES.forEach(function(b){
   a.setAttribute("data-wa","Olá! Quero reservar uma cota do bolão "+b.nome+" ("+b.concurso+").");
   acts.appendChild(a);
   if(b.online !== false){ var o = el("a","go alt","Comprar on-line"); o.setAttribute("data-cx",""); acts.appendChild(o); }
-  body.appendChild(acts);
-  c.appendChild(body); lb.appendChild(c);
+  body.appendChild(acts); c.appendChild(body); return c;
+}
+var grupos={}, ordem=[];
+BOLOES.forEach(function(b){ if(!grupos[b.quando]){grupos[b.quando]=[];ordem.push(b.quando);} grupos[b.quando].push(b); });
+ordem.sort();
+var relogios=[];
+ordem.forEach(function(q){
+  var sorteio=new Date(q), fecha=new Date(sorteio.getTime()-15*60000);
+  if(Date.now()>=fecha.getTime()) return;
+  var g=el("div","grupo");
+  var t=el("div","gtopo"); t.appendChild(el("h3",null,rotulo(sorteio)));
+  var cd=el("div","cd"); t.appendChild(cd); g.appendChild(t);
+  var gr=el("div","grid"); grupos[q].forEach(function(b){ gr.appendChild(card(b)); }); g.appendChild(gr);
+  lb.appendChild(g); relogios.push({el:cd, fecha:fecha, g:g});
 });
+function tique(){ relogios.forEach(function(r){ var f=falta(r.fecha-Date.now()); if(!f){ r.g.style.display="none"; return; }
+  var ms=r.fecha-Date.now(); r.el.className="cd"+(ms<3*3600e3?" urg":"");
+  r.el.textContent="⏰ Compra fecha em "+f; }); }
+tique(); setInterval(tique,30000);
+if(!relogios.length) lb.appendChild(el("p","sub","Novos bolões em breve. Chame no WhatsApp para saber o próximo."));
 
 var lv = document.getElementById("listaVirada");
 VIRADA.forEach(function(v){
