@@ -46,12 +46,15 @@ h1{margin:0 0 18px;font-size:clamp(36px,7vw,66px);line-height:1.05;max-width:900
 .btn.p:hover{background:#F58E55}
 .btn.s{border:2px solid #fff;color:#fff}
 .btn.s:hover{background:#fff;color:#163A8F}
-.premio{margin-top:36px;background:#0E2766;border:1px solid #2D4FA8;border-radius:16px;padding:24px;max-width:640px}
-.premio .eye{margin-bottom:6px}
-.premio .pv{font-size:44px;line-height:1.1;color:#FFC9A8}
-.premio .pt{font-weight:700;font-size:20px;margin:4px 0 12px}
-.premio ul{margin:0;padding-left:22px;color:#DCE4F7;font-size:18px}
-.premio li{margin-bottom:6px}
+.premio{margin-top:28px;background:#0E2766;border:1px solid #2D4FA8;border-radius:12px;padding:12px 16px;max-width:640px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.premio .pe{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#FFC9A8}
+.premio .pv{font-size:24px;line-height:1.1;color:#fff}
+.premio .pt{font-size:16px;color:#DCE4F7;flex-basis:100%}
+.desce{display:inline-flex;align-items:center;gap:8px;margin-top:22px;color:#fff;font-weight:700;font-size:19px;text-decoration:none;min-height:44px}
+.desce:hover{text-decoration:underline}
+.desce svg{animation:pula 1.6s ease-in-out infinite}
+@keyframes pula{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(prefers-reduced-motion:reduce){.desce svg{animation:none}}
 section.w{padding-top:60px;padding-bottom:20px}
 h2{margin:0 0 8px;font-size:clamp(32px,5vw,44px);line-height:1.1}
 .sub{margin:0 0 28px;color:#4A5468}
@@ -126,11 +129,13 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
       <a class="btn s" data-cx href="#como">Comprar on-line</a>
     </div>
     <div class="premio" aria-label="Último prêmio pago">
-      <p class="eye">Último prêmio pago</p>
-      <div class="d pv" id="pValor"></div>
-      <div class="pt" id="pTitulo"></div>
-      <ul id="pLinhas"></ul>
+      <span class="pe">Último prêmio pago</span>
+      <span class="d pv" id="pValor"></span>
+      <span class="pt" id="pTitulo"></span>
     </div>
+    <a class="desce" href="#boloes">Veja os bolões abertos
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14M5 12l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
 </div>
 
@@ -198,12 +203,7 @@ var CONFIG = {
   linkCaixa: "https://www.loteriasonline.caixa.gov.br/silce-web/#/bolao-caixa/001926",
   premio: {
     valor: "R$ 3.895,02",
-    titulo: "Quadra na Mega-Sena · Concurso 3083 · 08/11/2026",
-    linhas: [
-      "Bolão: 2 jogos de 8 dezenas",
-      "14 cotas de R$ 32,40",
-      "Um dos jogos acertou 4 números, o que vale 6 quadras"
-    ]
+    titulo: "Quadra na Mega-Sena 3083 · bolão de 2 jogos de 8 dezenas, 14 cotas de R$ 32,40"
   },
   atualizado: "20/11/2026, às 19h45"
 };
@@ -231,7 +231,7 @@ function wa(msg){return "https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURICompo
 
 document.getElementById("pValor").textContent = CONFIG.premio.valor;
 document.getElementById("pTitulo").textContent = CONFIG.premio.titulo;
-CONFIG.premio.linhas.forEach(function(t){ document.getElementById("pLinhas").appendChild(el("li",null,t)); });
+
 document.getElementById("atualizado").textContent = "Atualizado em " + CONFIG.atualizado + ".";
 
 var lb = document.getElementById("listaBoloes");
