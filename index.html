@@ -238,6 +238,13 @@ dialog.av::backdrop{background:rgba(8,40,22,.55)}
 .av .acts{display:grid;gap:10px}
 .av button.fx{background:none;border:0;font:inherit;font-size:16px;font-weight:600;color:#4A5568;min-height:44px;cursor:pointer;text-decoration:underline}
 .av a.zap{display:block;text-align:center;font-size:15px;color:#0B5F31;font-weight:600;margin-top:4px}
+.op{border:1px solid #E6DDCB;border-radius:12px;padding:12px 14px;background:#FBF9F3}
+.op .ot{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.op .ot b{display:block;font-size:18px;line-height:1.25}
+.op .ot .rs{display:block;font-size:15px;font-weight:700;color:#9A3412}
+.op .ot .d{font-size:25px;color:#0B5F31;white-space:nowrap}
+.op .ob{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.op .ob a.go{min-height:44px;font-size:16px}
 </style>
   <ellipse cx="270" cy="282" rx="230" ry="10" fill="#C9E6D0"/>
   <g class="sx-corpo">
@@ -440,6 +447,22 @@ function card(b){
   if(b.online !== false){ var o = el("a","go alt","Comprar on-line"); o.setAttribute("data-cx",""); o._b=b; acts.appendChild(o); }
   body.appendChild(acts); c.appendChild(body); return c;
 }
+function cardMulti(L){
+  var b0=L[0], c=el("article","card");
+  var h=el("div","h"); h.style.background=b0.cor;
+  h.appendChild(el("b",null,b0.nome.split(" · ")[0])); h.appendChild(el("span",null,b0.concurso+" · "+L.length+" bolões")); c.appendChild(h);
+  var body=el("div","b"); body.appendChild(el("div","d pr",b0.premio));
+  L.forEach(function(b){
+    var o=el("div","op"), t=el("div","ot"), x=el("div");
+    x.appendChild(el("b",null,b.formato)); x.appendChild(el("span","rs",b.cotas)); t.appendChild(x); t.appendChild(el("span","d",b.valor)); o.appendChild(t);
+    var ob=el("div","ob"), w=el("a","go","WhatsApp");
+    w.setAttribute("data-wa","Olá! Quero reservar uma cota do bolão "+b.nome+" ("+b.concurso+"), "+b.formato+", cota de "+b.valor+".");
+    w.setAttribute("aria-label","Reservar pelo WhatsApp: "+b.formato); ob.appendChild(w);
+    if(b.online !== false){ var k=el("a","go alt","On-line"); k.setAttribute("data-cx",""); k.setAttribute("aria-label","Comprar on-line: "+b.formato); k._b=b; ob.appendChild(k); }
+    o.appendChild(ob); body.appendChild(o);
+  });
+  c.appendChild(body); return c;
+}
 var grupos={}, ordem=[];
 BOLOES.forEach(function(b){ if(!grupos[b.quando]){grupos[b.quando]=[];ordem.push(b.quando);} grupos[b.quando].push(b); });
 ordem.sort();
@@ -456,7 +479,8 @@ ordem.forEach(function(q){
   var sv=document.createElementNS("http://www.w3.org/2000/svg","svg"); sv.setAttribute("viewBox","0 0 24 24"); sv.setAttribute("class","gseta"); sv.setAttribute("aria-hidden","true");
   var ph=document.createElementNS("http://www.w3.org/2000/svg","path"); ph.setAttribute("d","M6 9l6 6 6-6"); sv.appendChild(ph); t.appendChild(sv);
   g.appendChild(t);
-  var gr=el("div","grid"); grupos[q].forEach(function(b){ gr.appendChild(card(b)); }); g.appendChild(gr);
+  var gr=el("div","grid"); var sub={}, so=[]; grupos[q].forEach(function(b){ var k=b.nome.split(" · ")[0]+"|"+b.concurso; if(!sub[k]){sub[k]=[];so.push(k);} sub[k].push(b); });
+  so.forEach(function(k){ gr.appendChild(sub[k].length>1 ? cardMulti(sub[k]) : card(sub[k][0])); }); g.appendChild(gr);
   lb.appendChild(g); relogios.push({el:cd, fecha:fecha, g:g, fim:false});
 });
 function abrePrimeiro(){ for(var i=0;i<relogios.length;i++){ if(!relogios[i].fim){ relogios[i].g.open=true; return; } } }
