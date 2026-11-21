@@ -90,12 +90,19 @@ a.go.alt:hover{background:#EAF0FB}
 .v .d{font-size:27px;color:#0E7A3E}
 .v .rs{font-size:16px;font-weight:700;color:#9A3412}
 .row .mut{font-weight:700;color:#9A3412}
-.grupo{margin-bottom:34px}
-.gtopo{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid #BFE0C8}
+.grupo{margin-bottom:16px;background:#fff;border:1px solid #BFE0C8;border-radius:16px;overflow:hidden}
+.grupo[open]{background:transparent;border-color:transparent;overflow:visible;margin-bottom:30px}
+.gtopo{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:16px 52px 16px 16px;cursor:pointer;list-style:none;position:relative;min-height:64px}
+.gtopo::-webkit-details-marker{display:none}
+.grupo[open] .gtopo{background:#fff;border:1px solid #BFE0C8;border-radius:16px;margin-bottom:16px}
+.gtx{flex:1 1 220px;min-width:0}
 .gtopo h3{margin:0;font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:22px;color:#0B3D24}
+.gqt{font-size:16px;color:#4A5468}
+.gseta{position:absolute;right:14px;top:50%;width:28px;height:28px;margin-top:-14px;fill:none;stroke:#0B5F31;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.grupo[open] .gseta{transform:rotate(180deg)}
 .row{gap:10px}
 .row .d{white-space:nowrap}
-.cd{background:#0E7A3E;color:#fff;font-weight:700;font-size:17px;padding:8px 14px;border-radius:999px;white-space:nowrap}
+.cd{background:#0E7A3E;color:#fff;font-weight:700;font-size:17px;padding:8px 14px;border-radius:14px;white-space:normal;max-width:100%;font-size:16px;line-height:1.3}
 .cd.urg{background:#B42318;animation:pisca2 1.2s ease-in-out infinite}
 @keyframes pisca2{50%{opacity:.7}}
 @media(prefers-reduced-motion:reduce){.cd.urg{animation:none}}
@@ -409,16 +416,25 @@ var relogios=[];
 ordem.forEach(function(q){
   var sorteio=new Date(q), fecha=new Date(sorteio.getTime()-15*60000);
   if(Date.now()>=fecha.getTime()) return;
-  var g=el("div","grupo");
-  var t=el("div","gtopo"); t.appendChild(el("h3",null,rotulo(sorteio)));
-  var cd=el("div","cd"); t.appendChild(cd); g.appendChild(t);
+  var g=el("details","grupo");
+  var t=el("summary","gtopo");
+  var tx=el("div","gtx"); tx.appendChild(el("h3",null,rotulo(sorteio)));
+  var n=grupos[q].length; tx.appendChild(el("span","gqt",n+(n>1?" bolões":" bolão")));
+  t.appendChild(tx);
+  var cd=el("div","cd"); t.appendChild(cd);
+  var sv=document.createElementNS("http://www.w3.org/2000/svg","svg"); sv.setAttribute("viewBox","0 0 24 24"); sv.setAttribute("class","gseta"); sv.setAttribute("aria-hidden","true");
+  var ph=document.createElementNS("http://www.w3.org/2000/svg","path"); ph.setAttribute("d","M6 9l6 6 6-6"); sv.appendChild(ph); t.appendChild(sv);
+  g.appendChild(t);
   var gr=el("div","grid"); grupos[q].forEach(function(b){ gr.appendChild(card(b)); }); g.appendChild(gr);
-  lb.appendChild(g); relogios.push({el:cd, fecha:fecha, g:g});
+  lb.appendChild(g); relogios.push({el:cd, fecha:fecha, g:g, fim:false});
 });
-function tique(){ relogios.forEach(function(r){ var f=falta(r.fecha-Date.now()); if(!f){ r.g.style.display="none"; return; }
-  var ms=r.fecha-Date.now(); r.el.className="cd"+(ms<3*3600e3?" urg":"");
-  r.el.textContent="⏰ Compra fecha em "+f; }); }
-tique(); setInterval(tique,30000);
+function abrePrimeiro(){ for(var i=0;i<relogios.length;i++){ if(!relogios[i].fim){ relogios[i].g.open=true; return; } } }
+function tique(){ var mudou=false;
+  relogios.forEach(function(r){ if(r.fim) return; var ms=r.fecha-Date.now(), f=falta(ms);
+    if(!f){ r.fim=true; r.g.style.display="none"; mudou=true; return; }
+    r.el.className="cd"+(ms<3*3600e3?" urg":""); r.el.textContent="⏰ Compra fecha em "+f; });
+  if(mudou) abrePrimeiro(); }
+tique(); abrePrimeiro(); setInterval(tique,30000);
 if(!relogios.length) lb.appendChild(el("p","sub","Novos bolões em breve. Chame no WhatsApp para saber o próximo."));
 
 var lv = document.getElementById("listaVirada");
