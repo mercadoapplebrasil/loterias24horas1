@@ -263,7 +263,7 @@ var rc = document.getElementById("rodapeContato");
 if(CONFIG.whatsapp){ var w = el("a",null,"WhatsApp: reservar cota"); w.setAttribute("data-wa","Olá! Quero reservar uma cota de bolão."); rc.appendChild(w); rc.appendChild(document.createTextNode(" · ")); }
 var ig = el("a",null,"Instagram: @"+CONFIG.instagram); ig.href="https://www.instagram.com/"+CONFIG.instagram+"/"; rc.appendChild(ig);
 
-Array.prototype.forEach.call(document.querySelectorAll("[data-cx]"), function(x){ x.href = CONFIG.linkCaixa; x.rel = "noopener"; });
+Array.prototype.forEach.call(document.querySelectorAll("[data-cx]"), function(x){ x.href = CONFIG.linkCaixa; x.target = "_blank"; x.rel = "noopener"; });
 Array.prototype.forEach.call(document.querySelectorAll("[data-wa]"), function(x){
   if(CONFIG.whatsapp){ x.href = wa(x.getAttribute("data-wa")); x.rel = "noopener"; } else { x.style.display = "none"; }
 });
