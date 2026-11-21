@@ -223,6 +223,21 @@ footer a{color:#F5D77A}
 @keyframes sx-tb{0%,48%{transform:scaleX(0)}54%,88%{transform:scaleX(1)}94%,100%{transform:scaleX(0)}}
 @keyframes sx-pisca{0%{opacity:1}50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){.sx-a,.sx-b,.sx-rabo,.sx-corpo,.sx-tf,.sx-tb,.sx-pisca{animation:none}}
+dialog.av{border:0;border-radius:18px;padding:0;width:min(440px,calc(100vw - 32px));color:#14213D;box-shadow:0 24px 60px rgba(8,40,22,.35)}
+dialog.av::backdrop{background:rgba(8,40,22,.55)}
+.av .in{padding:24px 22px 20px}
+.av h2{margin:0 0 6px;font-size:23px;line-height:1.2}
+.av p{margin:0 0 14px;font-size:16px;color:#4A5568}
+.av .alvo{background:#E3F3E6;border:2px dashed #0E7A3E;border-radius:12px;padding:14px 16px;margin:0 0 14px}
+.av .alvo b{display:block;font-family:Outfit,Inter,sans-serif;font-size:22px;line-height:1.25;color:#0B5F31}
+.av .alvo span{display:block;font-size:17px;margin-top:2px}
+.av .alvo small{display:block;font-size:14px;color:#4A5568;margin-top:6px}
+.av ul{list-style:none;margin:0 0 14px;padding:0;max-height:42vh;overflow:auto}
+.av li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #E5E0D2;font-size:16px}
+.av li b{white-space:nowrap}
+.av .acts{display:grid;gap:10px}
+.av button.fx{background:none;border:0;font:inherit;font-size:16px;font-weight:600;color:#4A5568;min-height:44px;cursor:pointer;text-decoration:underline}
+.av a.zap{display:block;text-align:center;font-size:15px;color:#0B5F31;font-weight:600;margin-top:4px}
 </style>
   <ellipse cx="270" cy="282" rx="230" ry="10" fill="#C9E6D0"/>
   <g class="sx-corpo">
@@ -300,7 +315,7 @@ footer a{color:#F5D77A}
     <div class="vgrid" id="listaVirada"></div>
     <div class="vacts">
       <a class="btn w2" data-wa="Olá! Quero reservar uma cota da Mega da Virada." href="#como">Reservar pelo WhatsApp</a>
-      <a class="btn o2" data-cx href="#como">Comprar on-line</a>
+      <a class="btn o2" data-cx="virada" href="#como">Comprar on-line</a>
     </div>
   </div>
 </section>
@@ -341,6 +356,20 @@ footer a{color:#F5D77A}
   </div>
 </footer>
 
+<dialog class="av" id="aviso" aria-labelledby="avT">
+  <div class="in">
+    <h2 id="avT">Antes de ir para a Caixa</h2>
+    <p id="avP"></p>
+    <div class="alvo" id="avAlvo"><b id="avA"></b><span id="avB"></span><small id="avC"></small></div>
+    <ul id="avL"></ul>
+    <div class="acts">
+      <a class="go" id="avIr" target="_blank" rel="noopener">Ir para a Caixa</a>
+      <button class="fx" type="button" id="avX">Voltar</button>
+    </div>
+    <a class="zap" id="avZ" data-wa="Olá! Não achei o bolão na página da Caixa, pode me ajudar?" href="#">Não achou? Chame no WhatsApp</a>
+  </div>
+</dialog>
+
 <script>
 /* ====== EDITAR AQUI ====== */
 var CONFIG = {
@@ -353,22 +382,23 @@ var CONFIG = {
   },
   atualizado: "21/11/2026, às 9h33"
 };
+// "app" = valor da cota como aparece na Caixa (com a tarifa). Sem "app", o aviso mostra o valor do balcão + tarifa.
 var BOLOES = [
-  {quando:"2026-11-22T11:00:00-03:00", nome:"Mega-Sena · A", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"2 jogos de 8 dezenas", cotas:"Restam 2 de 12 cotas", valor:"R$ 37,80", selo:""},
+  {quando:"2026-11-22T11:00:00-03:00", nome:"Mega-Sena · A", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"2 jogos de 8 dezenas", cotas:"Restam 2 de 12 cotas", valor:"R$ 37,80", app:"R$ 37,91", selo:""},
   {quando:"2026-11-22T11:00:00-03:00", nome:"Mega-Sena · B", concurso:"Concurso 3089", cor:"#0E7A3E", premio:"R$ 45 milhões", sorteio:"Domingo, 22/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 10 de 10 cotas", valor:"R$ 22,68", selo:""},
-  {quando:"2026-11-23T21:00:00-03:00", nome:"+Milionária · A", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"3 jogos de 7 dezenas + 2 trevos", cotas:"Restam 7 de 7 cotas", valor:"R$ 24,30", selo:"Poucas cotas"},
+  {quando:"2026-11-23T21:00:00-03:00", nome:"+Milionária · A", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"3 jogos de 7 dezenas + 2 trevos", cotas:"Restam 7 de 7 cotas", valor:"R$ 24,30", app:"R$ 24,35", selo:"Poucas cotas"},
   {quando:"2026-11-23T21:00:00-03:00", nome:"+Milionária · B", concurso:"Concurso 409", cor:"#1F2A6B", premio:"R$ 117 milhões", sorteio:"Segunda, 23/11, às 21h", formato:"1 jogo de 7 dezenas + 3 trevos", cotas:"Restam 5 de 5 cotas", valor:"R$ 34,05", selo:"Poucas cotas"},
   {quando:"2026-11-23T21:00:00-03:00", nome:"Dupla Sena", concurso:"Concurso 3035", cor:"#A6193C", premio:"R$ 14,6 milhões", sorteio:"", formato:"1 jogo de 8 dezenas", cotas:"Restam 6 de 6 cotas", valor:"R$ 18,95", selo:"Dois sorteios no mesmo concurso"},
   {quando:"2026-11-22T11:00:00-03:00", nome:"Timemania", concurso:"Concurso 2471", cor:"#6B5D00", premio:"R$ 29,6 milhões", sorteio:"", formato:"15 jogos de 10 dezenas", cotas:"Restam 5 de 5 cotas", valor:"R$ 14,19", selo:""},
-  {quando:"2026-11-29T11:00:00-03:00", nome:"Quina Friday", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 7 de 10 cotas", valor:"R$ 18,90", selo:"Preço de Black Friday"}
+  {quando:"2026-11-29T11:00:00-03:00", nome:"Quina Friday", mod:"Quina", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 7 de 10 cotas", valor:"R$ 18,90", selo:"Preço de Black Friday"}
 ];
 var VIRADA = [
-  {nome:"Bolão 7×7", formato:"7 jogos de 7 dezenas", resta:"Restam 11 de 14 cotas", valor:"R$ 28,35"},
+  {nome:"Bolão 7×7", formato:"7 jogos de 7 dezenas", resta:"Restam 11 de 14 cotas", valor:"R$ 28,35", app:"R$ 28,47"},
   {nome:"Bolão 2×8", formato:"2 jogos de 8 dezenas", resta:"Restam 12 de 14 cotas", valor:"R$ 32,40"},
-  {nome:"Bolão 3×8", formato:"3 jogos de 8 dezenas", resta:"Restam 15 de 17 cotas", valor:"R$ 40,01"},
-  {nome:"Bolão 10 dezenas", formato:"1 jogo de 10 dezenas", resta:"Restam 13 de 17 cotas", valor:"R$ 100,05"},
+  {nome:"Bolão 3×8", formato:"3 jogos de 8 dezenas", resta:"Restam 15 de 17 cotas", valor:"R$ 40,01", app:"R$ 40,23"},
+  {nome:"Bolão 10 dezenas", formato:"1 jogo de 10 dezenas", resta:"Restam 13 de 17 cotas", valor:"R$ 100,05", app:"R$ 100,20"},
   {nome:"VIP 10", formato:"1 jogo de 10 dezenas", resta:"Restam 6 de 10 cotas", valor:"R$ 170,10"},
-  {nome:"Elite 11", formato:"1 jogo de 11 dezenas", resta:"Restam 11 de 17 cotas", valor:"R$ 220,12"}
+  {nome:"Elite 11", formato:"1 jogo de 11 dezenas", resta:"Restam 11 de 17 cotas", valor:"R$ 220,12", app:"R$ 220,27"}
 ];
 /* ====== FIM DA EDIÇÃO ====== */
 
@@ -406,7 +436,7 @@ function card(b){
   var a = el("a","go","Reservar pelo WhatsApp");
   a.setAttribute("data-wa","Olá! Quero reservar uma cota do bolão "+b.nome+" ("+b.concurso+").");
   acts.appendChild(a);
-  if(b.online !== false){ var o = el("a","go alt","Comprar on-line"); o.setAttribute("data-cx",""); acts.appendChild(o); }
+  if(b.online !== false){ var o = el("a","go alt","Comprar on-line"); o.setAttribute("data-cx",""); o._b=b; acts.appendChild(o); }
   body.appendChild(acts); c.appendChild(body); return c;
 }
 var grupos={}, ordem=[];
@@ -446,6 +476,37 @@ var rc = document.getElementById("rodapeContato");
 if(CONFIG.whatsapp){ var w = el("a",null,"WhatsApp: reservar cota"); w.setAttribute("data-wa","Olá! Quero reservar uma cota de bolão."); rc.appendChild(w); rc.appendChild(document.createTextNode(" · ")); }
 var ig = el("a",null,"Instagram: @"+CONFIG.instagram); ig.href="https://www.instagram.com/"+CONFIG.instagram+"/"; rc.appendChild(ig);
 
+var av = document.getElementById("aviso");
+function apostas(f){ return f.replace(/\bjogos\b/g,"apostas").replace(/\bjogo\b/g,"aposta"); }
+function preco(x){ return x.app ? x.app : x.valor + " + tarifa da Caixa"; }
+function aviso(b, virada){
+  var alvo=document.getElementById("avAlvo"), L=document.getElementById("avL"); L.textContent="";
+  if(b){
+    document.getElementById("avP").textContent="O link abre a página da lotérica com todos os bolões. Procure este:";
+    document.getElementById("avA").textContent=(b.mod||b.nome.split(" · ")[0])+" · "+preco(b);
+    document.getElementById("avB").textContent=apostas(b.formato);
+    document.getElementById("avC").textContent=b.concurso+(b.app?" · valor da cota já com a tarifa da Caixa":"");
+    alvo.style.display=""; L.style.display="none";
+  } else if(virada){
+    document.getElementById("avP").textContent="O link abre a página da lotérica com todos os bolões. Na Mega da Virada, procure pelo formato e pelo valor da cota:";
+    VIRADA.forEach(function(v){ var li=el("li"); li.appendChild(el("span",null,apostas(v.formato))); li.appendChild(el("b",null,v.app||v.valor)); L.appendChild(li); });
+    alvo.style.display="none"; L.style.display="";
+  } else {
+    document.getElementById("avP").textContent="O link abre a página da lotérica (Vilela & Granhani) com todos os bolões. Escolha a modalidade e procure o bolão pelo formato e pelo valor da cota, que lá aparece com a tarifa da Caixa.";
+    alvo.style.display="none"; L.style.display="none";
+  }
+  av.showModal();
+}
+if(av.showModal){
+  document.addEventListener("click", function(e){
+    var x=e.target.closest("a[data-cx]"); if(!x) return;
+    e.preventDefault(); aviso(x._b, x.getAttribute("data-cx")==="virada");
+  });
+  document.getElementById("avX").addEventListener("click", function(){ av.close(); });
+  document.getElementById("avIr").addEventListener("click", function(){ av.close(); });
+  av.addEventListener("click", function(e){ if(e.target===av) av.close(); });
+}
+document.getElementById("avIr").href = CONFIG.linkCaixa;
 Array.prototype.forEach.call(document.querySelectorAll("[data-cx]"), function(x){ x.href = CONFIG.linkCaixa; x.target = "_blank"; x.rel = "noopener"; });
 Array.prototype.forEach.call(document.querySelectorAll("[data-wa]"), function(x){
   if(CONFIG.whatsapp){ x.href = wa(x.getAttribute("data-wa")); x.rel = "noopener"; } else { x.style.display = "none"; }
