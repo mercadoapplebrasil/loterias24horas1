@@ -319,7 +319,6 @@ dialog.av::backdrop{background:rgba(8,40,22,.55)}
   <div class="vir">
     <p class="eye">Sorteio em 1º/01/2027 · apostas até 31/12</p>
     <h2>Mega da Virada: R$ 1 bilhão</h2>
-    <p class="t">Do bolão de entrada ao Master de 12 dezenas. O prêmio da Virada não acumula. As cotas das faixas mais altas são poucas.</p>
     <div class="vacts topo">
       <a class="btn w2" data-wa="Olá! Quero reservar uma cota da Mega da Virada." href="#como">Reservar pelo WhatsApp</a>
       <a class="btn o2" data-cx="virada" href="#como">Comprar on-line</a>
@@ -498,6 +497,8 @@ tique(); abrePrimeiro(); setInterval(tique,30000);
 if(!relogios.length) lb.appendChild(el("p","sub","Novos bolões em breve. Chame no WhatsApp para saber o próximo."));
 
 var lv = document.getElementById("listaVirada");
+function num(x){ return parseFloat(x.replace(/[^\d,]/g,"").replace(",",".")); }
+VIRADA.sort(function(x,y){ return num(y.valor)-num(x.valor); });
 VIRADA.forEach(function(v){
   var d = el("div","v"); d.appendChild(el("b",null,v.nome)); d.appendChild(el("div","mut",v.formato)); if(v.resta) d.appendChild(el("div","rs",v.resta)); d.appendChild(el("div","d",v.valor)); lv.appendChild(d);
 });
