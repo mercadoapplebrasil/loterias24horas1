@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loteca da semana · palpite da galera — Loterias 24 Horas (Lotérica da Avenida)</title>
+<meta name="description" content="Grade da Loteca da semana, bolão da Lotérica da Avenida e o palpite da galera: dê seu 1, X ou 2 nos 14 jogos e veja o ranking.">
+<meta property="og:title" content="Loteca da semana · palpite da galera">
+<meta property="og:description" content="Dê seu palpite nos 14 jogos da Loteca e veja o que a galera está achando.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://loterias24horas.com.br/loteca/">
+<meta property="og:image" content="https://loterias24horas.com.br/og.png">
+<meta property="og:locale" content="pt_BR">
+<link rel="canonical" href="https://loterias24horas.com.br/loteca/">
+<meta name="theme-color" content="#0E7A3E">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#FBF8EF;color:#14213D;font-family:Inter,system-ui,sans-serif;font-size:19px;line-height:1.5}
+h1,h2,h3,.d{font-family:Outfit,Inter,sans-serif;font-weight:800}
+.w{max-width:960px;margin:0 auto;padding:0 18px}
+a{color:#0B5F31}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
+
+header{background:#0E7A3E;color:#fff;position:sticky;top:0;z-index:20}
+.top{display:flex;gap:10px;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;min-width:0}
+.brand img{border-radius:12px;border:1px solid #2E9B5B;display:block}
+.brand b{font-family:Outfit,Inter,sans-serif;font-size:22px;line-height:1.1;display:block}
+.brand small{font-size:13px;color:#DFF3E5;display:block;line-height:1.3}
+nav{display:flex;gap:18px;font-weight:600;font-size:17px}
+nav a{color:#fff;text-decoration:none;padding:6px 0}
+.mbtn{display:none;width:48px;height:48px;border-radius:12px;border:1px solid #2E9B5B;background:#0B5F31;color:#fff;align-items:center;justify-content:center;cursor:pointer;flex:none}
+@media(max-width:820px){
+  .mbtn{display:inline-flex}
+  nav{display:none;position:absolute;left:0;right:0;top:100%;background:#0B5F31;flex-direction:column;gap:0;padding:6px 20px 12px;box-shadow:0 12px 24px rgba(0,0,0,.25)}
+  nav.open{display:flex}
+  nav a{font-size:19px;padding:14px 0;border-bottom:1px solid #2E9B5B}
+  nav a:last-child{border-bottom:0}
+}
+section[id]{scroll-margin-top:84px}
+
+.hero{background:#E3F3E6;color:#0B3D24}
+.hero .w{padding-top:34px;padding-bottom:34px}
+.eye{margin:0 0 10px;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0B5F31}
+h1{margin:0 0 6px;font-size:clamp(36px,8vw,58px);line-height:1.05}
+.hp{font-size:clamp(30px,7vw,46px);line-height:1.1;color:#0E7A3E;margin:4px 0 6px}
+.hs{margin:0;font-size:18px;color:#33523F}
+.cd{display:inline-block;margin-top:14px;background:#0E7A3E;color:#fff;font-weight:700;font-size:17px;padding:8px 14px;border-radius:14px;line-height:1.3}
+.cd.urg{background:#B42318}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;min-height:48px;padding:0 18px;border-radius:12px;background:#fff;border:2px solid #0E7A3E;color:#0B5F31;font-weight:700;text-decoration:none;font-size:17px}
+
+section.w{padding-top:42px}
+h2{margin:0 0 6px;font-size:clamp(30px,6vw,40px);line-height:1.1;color:#0B3D24}
+.sub{margin:0 0 20px;color:#4A5468;font-size:18px}
+.box{background:#fff;border:1px solid #E6DDCB;border-radius:16px;padding:18px}
+
+/* bolão em destaque */
+.bolao{background:#0E7A3E;color:#fff;border-radius:20px;padding:24px 20px}
+.bolao .eye{color:#C9F2D8}
+.bolao h2{color:#fff;margin-bottom:10px}
+.bl{list-style:none;margin:0 0 18px;padding:0;font-size:19px}
+.bl li{padding:8px 0;border-bottom:1px solid #2E9B5B;display:flex;justify-content:space-between;gap:12px}
+.bl li:last-child{border-bottom:0}
+.bl b{font-family:Outfit,Inter,sans-serif;font-size:22px;white-space:nowrap}
+.cota{font-family:Outfit,Inter,sans-serif;font-size:44px;line-height:1;margin:6px 0 4px}
+.rest{font-weight:700;color:#FFE08A;font-size:18px}
+.acts{display:grid;gap:12px;margin-top:18px}
+@media(min-width:620px){.acts{grid-template-columns:1fr 1fr}}
+.btn{display:flex;align-items:center;justify-content:center;min-height:56px;padding:0 20px;border-radius:12px;font-weight:700;font-size:19px;text-decoration:none;text-align:center;border:0;cursor:pointer;font-family:inherit}
+.btn.w2{background:#fff;color:#0B5F31}
+.btn.o2{border:2px solid #fff;color:#fff;background:transparent}
+.btn.p{background:#0E7A3E;color:#fff;width:100%}
+.btn.p:disabled{background:#9DB8A6;cursor:not-allowed}
+.nota{font-size:15px;color:#DFF3E5;margin:14px 0 0}
+
+/* grade */
+.jogos{list-style:none;margin:0;padding:0}
+.jg{display:grid;grid-template-columns:38px 1fr;gap:4px 10px;padding:12px 0;border-bottom:1px solid #EFE8D8;align-items:center}
+.jg:last-child{border-bottom:0}
+.jn{grid-row:span 2;font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:22px;color:#fff;background:#0E7A3E;border-radius:10px;height:38px;display:flex;align-items:center;justify-content:center}
+.jt{font-weight:700;font-size:19px;line-height:1.25}
+.jt .x{color:#8A8F99;font-weight:600;padding:0 4px}
+.jq{font-size:15px;color:#4A5468}
+.jq .pl{font-weight:800;color:#0B3D24;font-size:16px}
+.jq .rs{display:inline-block;margin-left:6px;padding:0 8px;border-radius:8px;background:#0B3D24;color:#fff;font-weight:800}
+
+/* palpite */
+.pal .jg{grid-template-columns:38px 1fr}
+.op3{grid-column:2;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.op3 label{position:relative}
+.op3 input{position:absolute;opacity:0;width:1px;height:1px}
+.op3 span{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:54px;border:2px solid #CFC6B2;border-radius:12px;background:#FBF9F3;cursor:pointer;line-height:1.1}
+.op3 span b{font-family:Outfit,Inter,sans-serif;font-size:24px}
+.op3 span small{font-size:13px;color:#4A5468;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px}
+.op3 input:checked+span{background:#0E7A3E;border-color:#0E7A3E;color:#fff}
+.op3 input:checked+span small{color:#DFF3E5}
+.op3 input:focus-visible+span{outline:3px solid #EE7B3D;outline-offset:2px}
+.campo{display:block;margin:0 0 14px}
+.campo span{display:block;font-weight:700;margin-bottom:6px}
+.campo input{width:100%;min-height:54px;font-size:19px;padding:0 14px;border:2px solid #CFC6B2;border-radius:12px;font-family:inherit}
+.ck{display:flex;gap:10px;align-items:flex-start;margin:4px 0 16px;font-size:17px}
+.ck input{width:26px;height:26px;flex:none;margin-top:2px;accent-color:#0E7A3E}
+.prog{position:sticky;bottom:0;background:#FBF8EF;padding:12px 0 14px;border-top:1px solid #E6DDCB;margin-top:10px}
+.prog p{margin:0 0 8px;font-weight:700;text-align:center}
+.msg{margin:12px 0 0;padding:12px 14px;border-radius:12px;font-weight:600;display:none}
+.msg.ok{display:block;background:#E3F3E6;color:#0B3D24}
+.msg.er{display:block;background:#FDECEC;color:#8A1C1C}
+.aviso{background:#FFF6DB;border:1px solid #F0D27A;border-radius:14px;padding:14px 16px;font-size:17px;margin:0 0 18px}
+.aviso b{display:block;font-size:18px;margin-bottom:2px}
+
+/* palpite do povo */
+.povo .jg{grid-template-columns:38px 1fr}
+.barra{grid-column:2;display:flex;height:34px;border-radius:10px;overflow:hidden;background:#EFE8D8;margin-top:6px}
+.barra i{display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:800;font-size:15px;color:#fff;min-width:0;overflow:hidden;white-space:nowrap}
+.barra .b1{background:#0E7A3E}.barra .bx{background:#8A8F99}.barra .b2{background:#1F4E9C}
+.tag{grid-column:2;font-size:15px;font-weight:700;margin-top:4px}
+.tag.fav{color:#0B5F31}.tag.div{color:#9A3412}
+.leg{display:flex;flex-wrap:wrap;gap:14px;font-size:16px;margin:0 0 12px}
+.leg i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:6px;vertical-align:-2px}
+
+/* ranking */
+.rk{list-style:none;margin:0;padding:0}
+.rk li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #EFE8D8;font-size:19px}
+.rk li:last-child{border-bottom:0}
+.rk .pos{font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:22px;width:40px;color:#0B5F31;flex:none}
+.rk .nm{flex:1;min-width:0;font-weight:700}
+.rk .pt{font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:22px;white-space:nowrap}
+.rk .pr{display:block;font-size:14px;font-weight:700;color:#9A3412}
+.vazio{color:#4A5468;margin:0}
+
+footer{background:#0B2B1A;color:#DFF3E5;margin-top:56px;font-size:17px}
+footer .w{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;padding-top:32px;padding-bottom:32px}
+footer b{color:#fff}
+footer a{color:#F5D77A}
+.esc{display:none !important}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="w top">
+    <a class="brand" href="/">
+      <img src="/icon-192.png" width="46" height="46" alt="">
+      <div><b>Loterias 24 Horas</b><small>Vilela &amp; Granhani (Lotérica da Avenida)</small></div>
+    </a>
+    <button class="mbtn" id="mbtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+    <nav id="menu" aria-label="Navegação">
+      <a href="#bolao">Bolão da Loteca</a>
+      <a href="#palpite">Dar meu palpite</a>
+      <a href="#povo">Palpite do povo</a>
+      <a href="#ranking">Ranking</a>
+      <a href="/">Todos os bolões</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="w">
+    <p class="eye" id="hEye">Loteca da semana</p>
+    <h1 id="hTit">Loteca</h1>
+    <div class="d hp" id="hPremio"></div>
+    <p class="hs" id="hSub"></p>
+    <div class="cd" id="hCd" hidden></div>
+    <div class="chips">
+      <a class="chip" href="#bolao">Ver o bolão</a>
+      <a class="chip" href="#palpite">Dar meu palpite</a>
+    </div>
+  </div>
+</div>
+
+<main>
+<section class="w" id="bolao">
+  <div class="bolao" id="bolaoBox"></div>
+</section>
+
+<section class="w" id="grade">
+  <h2>Os 14 jogos</h2>
+  <p class="sub" id="gradeSub">1 = vitória do time da casa · X = empate · 2 = vitória do visitante</p>
+  <div class="box"><ol class="jogos" id="listaGrade"></ol></div>
+</section>
+
+<section class="w" id="palpite">
+  <h2>Palpite da galera</h2>
+  <p class="sub">Dê seu 1, X ou 2 nos 14 jogos. Quem acertar mais aparece no ranking.</p>
+  <div class="aviso"><b>É só brincadeira, não é aposta.</b>O palpite não vale prêmio e não concorre na Loteca. Pra concorrer de verdade, compre uma cota do bolão.</div>
+  <form class="box pal" id="fPal" novalidate>
+    <label class="campo"><span>Seu nome</span><input id="fNome" name="nome" autocomplete="given-name" maxlength="40" required></label>
+    <label class="campo"><span>Seu WhatsApp (com DDD)</span><input id="fWa" name="whats" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(19) 99999-9999" maxlength="16" required></label>
+    <p class="mut" style="margin:-6px 0 14px;font-size:15px;color:#4A5468">Seu WhatsApp não aparece no site. Só usamos pra avisar se você ficar em 1º no ranking.</p>
+    <ol class="jogos" id="listaPal"></ol>
+    <label class="ck"><input type="checkbox" id="fOpt"> <span>Quero receber no WhatsApp o bolão da Loteca de cada semana.</span></label>
+    <input class="esc" id="fHp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="prog">
+      <p id="fConta">0 de 14 jogos</p>
+      <button class="btn p" id="fEnv" type="submit" disabled>Enviar meu palpite</button>
+      <div class="msg" id="fMsg" role="status"></div>
+    </div>
+  </form>
+</section>
+
+<section class="w" id="povo">
+  <h2>Palpite do povo</h2>
+  <p class="sub" id="povoSub">O que a galera está apostando em cada jogo.</p>
+  <div class="box povo">
+    <div class="leg"><span><i style="background:#0E7A3E"></i>1 casa</span><span><i style="background:#8A8F99"></i>X empate</span><span><i style="background:#1F4E9C"></i>2 fora</span></div>
+    <ol class="jogos" id="listaPovo"></ol>
+  </div>
+</section>
+
+<section class="w" id="ranking">
+  <h2>Ranking dos palpiteiros</h2>
+  <p class="sub" id="rkSub">Sai depois dos jogos.</p>
+  <div class="box"><ol class="rk" id="listaRk"></ol></div>
+</section>
+</main>
+
+<footer>
+  <div class="w">
+    <div>
+      <div><b>Vilela &amp; Granhani (Lotérica da Avenida)</b></div>
+      <div>Av. 6 de Agosto, 14 · Pirassununga/SP</div>
+      <div><a href="/">Ver todos os bolões</a></div>
+    </div>
+    <div style="max-width:520px">
+      <div><b>Proibido para menores de 18 anos. Jogue com responsabilidade.</b></div>
+      <div>O palpite da galera é uma brincadeira gratuita e não é aposta nem dá direito a prêmio. Este site não é da Caixa; as compras on-line são feitas nos canais oficiais das Loterias Caixa.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ====== EDITAR AQUI ====== */
+var CONFIG = {
+  whatsapp: "5511914819638",
+  linkCaixa: "https://www.loteriasonline.caixa.gov.br/silce-web/#/bolao-caixa/001926",
+  api: ""   // URL do Apps Script (termina em /exec). Vazio = o palpite vai pelo WhatsApp
+};
+var LOTECA = {
+  concurso: 1285,
+  premio: "",                       // ex.: "R$ 1,2 milhão"
+  especial: false,
+  fechamento: "",                   // ISO, ex.: "2026-11-28T15:45:00-03:00" (fecha palpite e bolão)
+  bolao: null,                      // ex.: {formato:"4 triplos e 1 duplo", cotas:11, restam:8, valor:"R$ 39,76"}
+  // casa, fora, quando (texto livre). r = resultado depois do jogo: "1", "X" ou "2"; placar opcional
+  jogos: []
+};
+/* ====== FIM DA EDIÇÃO ====== */
+
+function el(t,c,x){var e=document.createElement(t); if(c)e.className=c; if(x!=null)e.textContent=x; return e;}
+function wa(m){return "https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(m);}
+function dd(n){return (n<10?"0":"")+n;}
+var J = LOTECA.jogos, TEM = J.length === 14;
+var FECHA = LOTECA.fechamento ? new Date(LOTECA.fechamento) : null;
+var RES = TEM && J.every(function(j){return j.r;}) ? J.map(function(j){return j.r;}).join("") : "";
+function aberto(){ return TEM && !RES && (!FECHA || Date.now() < FECHA.getTime()); }
+
+/* menu */
+var mb=document.getElementById("mbtn"), mn=document.getElementById("menu");
+function menu(a){mn.classList.toggle("open",a); mb.setAttribute("aria-expanded",a?"true":"false");}
+mb.addEventListener("click",function(){menu(!mn.classList.contains("open"));});
+mn.addEventListener("click",function(e){if(e.target.tagName==="A")menu(false);});
+
+/* topo */
+document.getElementById("hEye").textContent = LOTECA.especial ? "Loteca · concurso especial" : "Loteca da semana";
+document.getElementById("hTit").textContent = "Loteca " + LOTECA.concurso;
+document.getElementById("hPremio").textContent = LOTECA.premio ? "Prêmio estimado " + LOTECA.premio : "";
+document.getElementById("hSub").textContent = !TEM ? "A grade deste concurso sai em breve." : RES ? "Jogos encerrados. Veja o resultado e o ranking." : "14 jogos · acerte 13 ou 14 para ganhar";
+var cdEl=document.getElementById("hCd");
+function falta(ms){var m=Math.floor(ms/60000),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mi=m%60;
+  if(d>0)return d+(d>1?" dias, ":" dia, ")+h+"h e "+dd(mi)+"min"; if(h>0)return h+"h "+dd(mi)+"min"; return mi+" min";}
+function tique(){ if(!FECHA||!TEM||RES){cdEl.hidden=true;return;} var ms=FECHA-Date.now();
+  if(ms<=0){cdEl.hidden=false; cdEl.className="cd"; cdEl.textContent="Apostas e palpites encerrados"; travar(); return;}
+  cdEl.hidden=false; cdEl.className="cd"+(ms<3*3600e3?" urg":""); cdEl.textContent="⏰ Bolão e palpites fecham em "+falta(ms); }
+
+/* bolão */
+(function(){
+  var bx=document.getElementById("bolaoBox"), b=LOTECA.bolao;
+  bx.appendChild(el("p","eye","Bolão da Lotérica da Avenida"));
+  bx.appendChild(el("h2",null,"Bolão da Loteca "+LOTECA.concurso));
+  if(!b){ bx.appendChild(el("p",null,"O bolão desta semana abre assim que a grade sair. Chame no WhatsApp pra reservar sua cota."));
+    var a0=el("div","acts"), w0=el("a","btn w2","Reservar pelo WhatsApp"); w0.href=wa("Olá! Quero reservar uma cota do bolão da Loteca "+LOTECA.concurso+"."); a0.appendChild(w0); bx.appendChild(a0); return; }
+  var ul=el("ul","bl");
+  function li(k,v){var l=el("li"); l.appendChild(el("span",null,k)); l.appendChild(el("b",null,v)); ul.appendChild(l);}
+  li("Jogo", b.formato);
+  li("Cotas", b.cotas + " cotas");
+  bx.appendChild(ul);
+  bx.appendChild(el("div",null,"Valor da cota"));
+  bx.appendChild(el("div","cota",b.valor));
+  if(b.restam!=null) bx.appendChild(el("div","rest", b.restam>0 ? "Restam "+b.restam+" de "+b.cotas+" cotas" : "Esgotado"));
+  var acts=el("div","acts");
+  var w=el("a","btn w2","Reservar pelo WhatsApp"); w.href=wa("Olá! Quero reservar uma cota do bolão da Loteca "+LOTECA.concurso+" ("+b.formato+"), cota de "+b.valor+"."); w.rel="noopener";
+  var o=el("a","btn o2","Comprar on-line"); o.href=CONFIG.linkCaixa; o.target="_blank"; o.rel="noopener";
+  acts.appendChild(w); acts.appendChild(o); bx.appendChild(acts);
+  bx.appendChild(el("p","nota","Valor da cota no balcão. Na compra on-line, a Caixa cobra uma pequena tarifa. Na página da Caixa, procure a Loteca "+LOTECA.concurso+"."));
+})();
+
+/* grade */
+var lg=document.getElementById("listaGrade");
+function linhaJogo(j,i){ var l=el("li","jg"); l.appendChild(el("span","jn",String(i+1)));
+  var t=el("div","jt"); t.appendChild(document.createTextNode(j.casa)); t.appendChild(el("span","x","x")); t.appendChild(document.createTextNode(j.fora)); l.appendChild(t); return l; }
+if(!TEM){ lg.appendChild(el("li","vazio","A grade do concurso "+LOTECA.concurso+" sai em breve.")); }
+J.forEach(function(j,i){ var l=linhaJogo(j,i), q=el("div","jq");
+  if(j.placar||j.r){ if(j.placar) q.appendChild(el("span","pl",j.placar)); if(j.r) q.appendChild(el("span","rs",j.r)); } else q.textContent=j.quando||"";
+  l.appendChild(q); lg.appendChild(l); });
+
+/* formulário */
+var lp=document.getElementById("listaPal"), fEnv=document.getElementById("fEnv"), fConta=document.getElementById("fConta"), fMsg=document.getElementById("fMsg");
+J.forEach(function(j,i){ var l=linhaJogo(j,i), g=el("div","op3"); g.setAttribute("role","radiogroup"); g.setAttribute("aria-label","Jogo "+(i+1)+": "+j.casa+" x "+j.fora);
+  [["1",j.casa],["X","Empate"],["2",j.fora]].forEach(function(o){ var lb=el("label"), r=el("input"); r.type="radio"; r.name="j"+i; r.value=o[0];
+    r.setAttribute("aria-label", o[0]==="X"?"Empate":"Vitória do "+o[1]); var s=el("span"); s.appendChild(el("b",null,o[0])); s.appendChild(el("small",null,o[1]));
+    lb.appendChild(r); lb.appendChild(s); g.appendChild(lb); });
+  l.appendChild(g); lp.appendChild(l); });
+function palpite(){ var s=""; for(var i=0;i<14;i++){ var r=document.querySelector('input[name="j'+i+'"]:checked'); s+= r? r.value : "-"; } return s; }
+function conta(){ var p=palpite(), n=p.replace(/-/g,"").length; fConta.textContent=n+" de 14 jogos"; fEnv.disabled = !aberto() || n<14; }
+document.getElementById("fPal").addEventListener("change",conta);
+function travar(){ fEnv.disabled=true; Array.prototype.forEach.call(document.querySelectorAll("#fPal input"),function(x){x.disabled=true;}); fEnv.textContent = RES ? "Palpites encerrados" : TEM ? "Palpites encerrados" : "Palpites abrem quando a grade sair"; }
+if(!aberto()) travar();
+function msg(t,ok){ fMsg.className="msg "+(ok?"ok":"er"); fMsg.textContent=t; }
+document.getElementById("fPal").addEventListener("submit",function(e){
+  e.preventDefault(); if(!aberto()) return;
+  var nome=document.getElementById("fNome").value.trim(), fone=document.getElementById("fWa").value.replace(/\D/g,""), p=palpite();
+  if(document.getElementById("fHp").value) return;
+  if(nome.length<2) return msg("Escreva seu nome.",false);
+  if(fone.length<10||fone.length>11) return msg("Confira o WhatsApp: DDD + número.",false);
+  if(p.indexOf("-")>=0) return msg("Falta marcar algum jogo.",false);
+  var dados={concurso:LOTECA.concurso, nome:nome, whats:fone, palpite:p, aceita:document.getElementById("fOpt").checked};
+  if(!CONFIG.api){ // sem planilha ligada: manda pelo WhatsApp
+    var txt="Meu palpite na Loteca "+LOTECA.concurso+" ("+nome+"):\n"+J.map(function(j,i){return (i+1)+". "+j.casa+" x "+j.fora+": "+p[i];}).join("\n");
+    window.open(wa(txt),"_blank","noopener"); msg("Abrimos o WhatsApp com o seu palpite. É só enviar!",true); return; }
+  fEnv.disabled=true; fEnv.textContent="Enviando…";
+  fetch(CONFIG.api,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(dados)})
+    .then(function(r){return r.json();})
+    .then(function(r){ if(r.ok){ msg(r.atualizado?"Palpite atualizado! Valeu, "+nome+".":"Palpite enviado! Boa sorte, "+nome+".",true); carregar(); }
+      else msg(r.erro||"Não deu certo. Tente de novo.",false); })
+    .catch(function(){ msg("Sem conexão. Tente de novo em instantes.",false); })
+    .then(function(){ fEnv.textContent="Enviar meu palpite"; conta(); });
+});
+conta();
+
+/* palpite do povo + ranking */
+function pct(n,t){return t?Math.round(n*100/t):0;}
+function desenhaPovo(L){
+  var lv=document.getElementById("listaPovo"); lv.textContent="";
+  document.getElementById("povoSub").textContent = L.length ? L.length+(L.length>1?" palpites":" palpite")+" até agora." : "Ainda não tem palpite. Seja o primeiro!";
+  if(!TEM){ lv.appendChild(el("li","vazio","Aparece quando a grade sair.")); return; }
+  J.forEach(function(j,i){ var c={"1":0,"X":0,"2":0}; L.forEach(function(x){ if(c[x.p[i]]!=null) c[x.p[i]]++; });
+    var t=L.length, l=linhaJogo(j,i), b=el("div","barra");
+    b.setAttribute("aria-label","1: "+pct(c["1"],t)+"%, X: "+pct(c.X,t)+"%, 2: "+pct(c["2"],t)+"%");
+    [["1","b1"],["X","bx"],["2","b2"]].forEach(function(k){ var v=pct(c[k[0]],t), s=el("i",k[1], v>=12? k[0]+" "+v+"%" : ""); s.style.width=(t?v:33.3)+"%"; b.appendChild(s); });
+    l.appendChild(b);
+    if(t>=5){ var mx=Math.max(c["1"],c.X,c["2"])/t;
+      if(mx>=0.6) l.appendChild(el("div","tag fav","Favorito claro"));
+      else if(mx<0.45) l.appendChild(el("div","tag div","Jogo dividido")); }
+    lv.appendChild(l); });
+}
+function desenhaRanking(L){
+  var lr=document.getElementById("listaRk"), sub=document.getElementById("rkSub"); lr.textContent="";
+  if(!RES){ sub.textContent="Sai depois dos 14 jogos."; lr.appendChild(el("li","vazio","Aguardando os resultados.")); return; }
+  var R=L.map(function(x){ var a=0; for(var i=0;i<14;i++) if(x.p[i]===RES[i]) a++; return {n:x.n,a:a,t:x.t}; })
+         .sort(function(x,y){ return y.a-x.a || x.t-y.t; });
+  sub.textContent = R.length ? "Concurso "+LOTECA.concurso+" · empate desempata por quem palpitou primeiro." : "Ninguém palpitou neste concurso.";
+  R.slice(0,20).forEach(function(r,i){ var li=el("li"); li.appendChild(el("span","pos",(i+1)+"º"));
+    var nm=el("span","nm",r.n); if(r.a>=13) nm.appendChild(el("span","pr","Faria prêmio na Loteca!")); li.appendChild(nm);
+    li.appendChild(el("span","pt",r.a+(r.a===1?" acerto":" acertos"))); lr.appendChild(li); });
+}
+function carregar(){
+  if(!CONFIG.api){ desenhaPovo([]); desenhaRanking([]); if(TEM) document.getElementById("povoSub").textContent="Os palpites aparecem aqui assim que a planilha estiver ligada."; return; }
+  fetch(CONFIG.api+"?c="+LOTECA.concurso).then(function(r){return r.json();})
+    .then(function(r){ var L=(r&&r.palpites)||[]; desenhaPovo(L); desenhaRanking(L); })
+    .catch(function(){ desenhaPovo([]); desenhaRanking([]); });
+}
+carregar(); tique(); setInterval(tique,30000); setInterval(function(){ if(aberto()) carregar(); },120000);
+</script>
+</body>
+</html>
