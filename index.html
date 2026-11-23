@@ -198,11 +198,6 @@ footer a{color:#F5D77A}
       <a class="btn p" data-wa="Olá! Quero reservar uma cota de bolão." href="#como">Reservar pelo WhatsApp</a>
       <a class="btn s" data-cx href="#como">Comprar on-line</a>
     </div>
-    <div class="premio" aria-label="Último prêmio pago">
-      <span class="pe">Último prêmio pago</span>
-      <span class="d pv" id="pValor"></span>
-      <span class="pt" id="pTitulo"></span>
-    </div>
     <a class="desce" href="#boloes">Veja os bolões abertos
       <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14M5 12l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -424,8 +419,6 @@ var VIRADA = [
 function el(tag, cls, txt){var e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e;}
 function wa(msg){return "https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(msg);}
 
-document.getElementById("pValor").textContent = CONFIG.premio.valor;
-document.getElementById("pTitulo").textContent = CONFIG.premio.titulo;
 
 document.getElementById("atualizado").textContent = "Atualizado em " + CONFIG.atualizado + ".";
 
