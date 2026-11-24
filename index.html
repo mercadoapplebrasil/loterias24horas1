@@ -68,7 +68,7 @@ h2{margin:0 0 8px;font-size:clamp(32px,5vw,44px);line-height:1.1}
 .mut{font-size:17px;color:#4A5468}
 .row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed #E6DDCB;padding-top:12px;margin-top:auto}
 .row .d{font-size:29px;color:#163A8F}
-.selo{font-size:16px;font-weight:700;color:#9A3412}
+.selo{font-size:16px;font-weight:700;color:#9A3412}.selo a{color:inherit;text-decoration:underline}
 a.go{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:10px;background:#163A8F;color:#fff;font-weight:700;text-decoration:none;font-size:18px}
 a.go:hover{background:#0E2766}
 a.go.alt{background:#fff;color:#163A8F;border:2px solid #163A8F}
@@ -404,7 +404,7 @@ var BOLOES = [
   {quando:"2026-11-24T21:00:00-03:00", nome:"Lotofácil", mod:"Lotofácil", concurso:"Concurso 3837", cor:"#930089", premio:"R$ 5 milhões", sorteio:"Terça, 24/11, às 21h", formato:"1 jogo de 16 dezenas", cotas:"Restam 5 de 5 cotas", valor:"R$ 15,15"},
   {quando:"2026-11-25T21:00:00-03:00", nome:"+Milionária", concurso:"Concurso 410", cor:"#1F2A6B", premio:"R$ 118 milhões", sorteio:"Quarta, 25/11, às 21h", formato:"1 jogo de 7 dezenas + 3 trevos", cotas:"Restam 5 de 5 cotas", valor:"R$ 34,05"},
   {quando:"2026-11-25T21:00:00-03:00", nome:"Dupla Sena", concurso:"Concurso 3036", cor:"#A6193C", premio:"R$ 15,3 milhões", sorteio:"Quarta, 25/11, às 21h", formato:"2 jogos de 7 dezenas", cotas:"Restam 5 de 5 cotas", valor:"R$ 11,34", selo:"Dois sorteios no mesmo concurso"},
-  {quando:"2026-11-28T16:00:00-03:00", nome:"Loteca Especial", mod:"Loteca", concurso:"Concurso 1285", cor:"#C8102E", premio:"R$ 1 milhão", sorteio:"Apostas até sábado, 28/11, às 16h", formato:"2 triplos + 4 duplos (144 apostas)", cotas:"Restam 12 de 12 cotas", valor:"R$ 32,40", selo:"Palpites em bolaoloteca.com.br"},
+  {quando:"2026-11-28T16:00:00-03:00", nome:"Loteca Especial", mod:"Loteca", concurso:"Concurso 1285", cor:"#C8102E", premio:"R$ 1 milhão", sorteio:"Apostas até sábado, 28/11, às 16h", formato:"2 triplos + 4 duplos (144 apostas)", cotas:"Restam 12 de 12 cotas", valor:"R$ 32,40", selo:"Veja os palpites em bolaoloteca.com.br →", link:"https://bolaoloteca.com.br"},
   {quando:"2026-11-29T11:00:00-03:00", nome:"Quina Friday · 8 dezenas", mod:"Quina", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 8 dezenas", cotas:"Restam 2 de 10 cotas", valor:"R$ 18,90", selo:"Últimas cotas"},
   {quando:"2026-11-29T11:00:00-03:00", nome:"Quina Friday · 9 dezenas", mod:"Quina", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 9 dezenas", cotas:"Restam 12 de 12 cotas", valor:"R$ 35,43", app:"R$ 35,52"},
   {quando:"2026-11-29T11:00:00-03:00", nome:"Quina Friday · 10 dezenas", mod:"Quina", concurso:"Concurso 7173", cor:"#5B2A86", premio:"R$ 50 milhões", sorteio:"Domingo, 29/11, às 11h", formato:"1 jogo de 10 dezenas", cotas:"Restam 14 de 14 cotas", valor:"R$ 60,75"}
@@ -446,7 +446,7 @@ function card(b){
   body.appendChild(el("div","d pr",b.premio));
   body.appendChild(el("div",null,b.formato));
   var r = el("div","row"); r.appendChild(el("span","mut",b.cotas)); r.appendChild(el("span","d",b.valor)); body.appendChild(r);
-  if(b.selo) body.appendChild(el("div","selo",b.selo));
+  if(b.selo){ var sd=el("div","selo"); if(b.link){ var la=el("a",null,b.selo); la.href=b.link; la.target="_blank"; la.rel="noopener"; sd.appendChild(la);} else sd.textContent=b.selo; body.appendChild(sd); }
   var acts = el("div","acts");
   var a = el("a","go","Reservar pelo WhatsApp");
   a.setAttribute("data-wa","Olá! Quero reservar uma cota do bolão "+b.nome+" ("+b.concurso+").");
