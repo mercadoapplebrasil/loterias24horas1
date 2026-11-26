@@ -209,7 +209,6 @@ footer a{color:#F5D77A}
 <main>
 <section class="w" id="boloes">
   <h2>Bolões da semana</h2>
-  <p class="sub">Valor da cota no balcão. Na compra on-line, a Caixa cobra uma pequena tarifa de serviço. <span id="atualizado"></span></p>
   <div id="listaBoloes"></div>
 </section>
 
@@ -423,7 +422,7 @@ function el(tag, cls, txt){var e=document.createElement(tag); if(cls)e.className
 function wa(msg){return "https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(msg);}
 
 
-document.getElementById("atualizado").textContent = "Atualizado em " + CONFIG.atualizado + ".";
+/* atualizado removido */
 
 var mb = document.getElementById("mbtn"), mn = document.getElementById("menu");
 function menu(abre){ mn.classList.toggle("open", abre); mb.setAttribute("aria-expanded", abre ? "true" : "false"); mb.setAttribute("aria-label", abre ? "Fechar menu" : "Abrir menu"); }
