@@ -172,6 +172,16 @@ section[id],details[id],div[id]{scroll-margin-top:84px}
 .confia svg{width:24px;height:24px;flex:none;margin-top:2px}
 .confia b{display:block;font-size:18px;margin-bottom:2px}
 
+/* palpite do dia do salsicha */
+.palp{text-align:center}
+.palp .pe{margin:0 0 6px;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--verde2)}
+.palp h2{font-size:clamp(26px,6vw,36px);color:var(--verde3);margin:0 0 14px}
+.pbs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 0 12px}
+.pbs span{width:48px;height:48px;border-radius:50%;background:var(--verde);color:#fff;font-weight:800;font-size:21px;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.palp .pt{margin:0 auto 12px;max-width:520px;font-size:15px;color:var(--cinza)}
+.psh{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px;border-radius:12px;border:2px solid var(--verde);background:#fff;color:var(--verde2);font:inherit;font-weight:800;font-size:16px;cursor:pointer}
+.psh:hover{background:var(--claro)}
+.psh svg{width:20px;height:20px;flex:none}
 /* mascote e rodapé */
 .mascote{display:flex;justify-content:center;padding:30px 8px 0}
 .sx-btn{display:block;width:min(100%,700px);margin:0 0 -4px;padding:0;border:0;background:none;cursor:pointer;border-radius:18px;-webkit-tap-highlight-color:transparent;font:inherit;color:inherit}
@@ -276,6 +286,14 @@ dialog.av::backdrop{background:rgba(8,40,22,.55)}
     <div class="passo"><div class="n">3</div><b>Acompanhe o resultado</b><span>Depois do sorteio, a gente envia a conferência do bolão para os cotistas.</span></div>
   </div>
 </section>
+
+<section class="w sec palp" id="palpite" hidden>
+  <p class="pe" id="pDia">Mega-Sena</p>
+  <h2>Palpite do dia do salsicha</h2>
+  <div class="pbs" id="pNum" role="img"></div>
+  <p class="pt">Troca todo dia à meia-noite. É só por diversão: palpite não aumenta a chance de ganhar.</p>
+  <button class="psh" type="button" id="pSh"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Mandar pros amigos</button>
+</section>
 </main>
 
 <div class="mascote"><button class="sx-btn" id="sx" type="button" data-som="auau.mp3" aria-label="Mascote salsicha com o bilhete premiado: toque para ouvir o au au"><svg class="sx" viewBox="6 -188 1069 484" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><style>
@@ -324,8 +342,7 @@ dialog.av::backdrop{background:rgba(8,40,22,.55)}
 <text x="225" y="55" font-size="48" text-anchor="middle" fill="#fff" letter-spacing="1">MEGA-SENA</text>
 <rect width="450" height="320" rx="24" fill="none" stroke="#0B5F31" stroke-width="8"/>
 <g class="sx-bolas"><g class="sx-bola sx-b0"><circle cx="85" cy="120" r="37" fill="#E3F3E6" stroke="#0E7A3E" stroke-width="5"/><text x="85" y="133" font-size="38" text-anchor="middle" fill="#0B3D24">07</text></g><g class="sx-bola sx-b1"><circle cx="225" cy="120" r="37" fill="#E3F3E6" stroke="#0E7A3E" stroke-width="5"/><text x="225" y="133" font-size="38" text-anchor="middle" fill="#0B3D24">13</text></g><g class="sx-bola sx-b2"><circle cx="365" cy="120" r="37" fill="#E3F3E6" stroke="#0E7A3E" stroke-width="5"/><text x="365" y="133" font-size="38" text-anchor="middle" fill="#0B3D24">24</text></g><g class="sx-bola sx-b3"><circle cx="85" cy="204" r="37" fill="#E3F3E6" stroke="#0E7A3E" stroke-width="5"/><text x="85" y="217" font-size="38" text-anchor="middle" fill="#0B3D24">33</text></g><g class="sx-bola sx-b4"><circle cx="225" cy="204" r="37" fill="#E3F3E6" stroke="#0E7A3E" stroke-width="5"/><text x="225" y="217" font-size="38" text-anchor="middle" fill="#0B3D24">41</text></g><g class="sx-bola sx-b5"><circle cx="365" cy="204" r="37" fill="#E3F3E6" stroke="#0E7A3E" stroke-width="5"/><text x="365" y="217" font-size="38" text-anchor="middle" fill="#0B3D24">58</text></g></g>
-<path d="M40 268H270M40 292H200" stroke="#BFE0C8" stroke-width="9" stroke-linecap="round"/>
-<text x="414" y="298" font-size="28" text-anchor="end" fill="#0E7A3E">BOLÃO</text>
+<text class="sx-pd" x="225" y="292" font-size="28" text-anchor="middle" fill="#0E7A3E" letter-spacing="1">PALPITE DO DIA</text>
 <g transform="translate(225 292) rotate(-4)"><g class="sx-carimbo"><rect x="-175" y="-40" width="350" height="80" rx="18" fill="#F5C842" stroke="#0B3D24" stroke-width="6"/>
 <text y="17" font-size="50" text-anchor="middle" fill="#0B3D24">PREMIADO!</text></g></g>
 <g transform="translate(430 20)"><path class="sx-e sx-e0" d="M0.0 -24.0L5.9 -8.1L22.8 -7.4L9.5 3.1L14.1 19.4L0.0 10.0L-14.1 19.4L-9.5 3.1L-22.8 -7.4L-5.9 -8.1Z" fill="#F5C842" stroke="#C99A12" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(452 196)"><path class="sx-e sx-e1" d="M0.0 -24.0L5.9 -8.1L22.8 -7.4L9.5 3.1L14.1 19.4L0.0 10.0L-14.1 19.4L-9.5 3.1L-22.8 -7.4L-5.9 -8.1Z" fill="#F5C842" stroke="#C99A12" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(20 304)"><path class="sx-e sx-e2" d="M0.0 -24.0L5.9 -8.1L22.8 -7.4L9.5 3.1L14.1 19.4L0.0 10.0L-14.1 19.4L-9.5 3.1L-22.8 -7.4L-5.9 -8.1Z" fill="#F5C842" stroke="#C99A12" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(300 -6)"><path class="sx-e sx-e3" d="M0.0 -24.0L5.9 -8.1L22.8 -7.4L9.5 3.1L14.1 19.4L0.0 10.0L-14.1 19.4L-9.5 3.1L-22.8 -7.4L-5.9 -8.1Z" fill="#F5C842" stroke="#C99A12" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(128 -8)"><path class="sx-e sx-e4" d="M0.0 -24.0L5.9 -8.1L22.8 -7.4L9.5 3.1L14.1 19.4L0.0 10.0L-14.1 19.4L-9.5 3.1L-22.8 -7.4L-5.9 -8.1Z" fill="#F5C842" stroke="#C99A12" stroke-width="3" stroke-linejoin="round"/></g>
@@ -548,7 +565,7 @@ window.addEventListener("hashchange",irHash);
 
 fetch("dados.json",{cache:"no-store"})
   .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
-  .then(function(j){for(var k in j)D[k]=j[k];ligar();montar();virada();irHash();setInterval(tique,30000);})
+  .then(function(j){for(var k in j)D[k]=j[k];ligar();montar();virada();window.L24D=D;if(window.salsichaDados)window.salsichaDados(D);irHash();setInterval(tique,30000);})
   .catch(function(){var lista=document.getElementById("lista");lista.textContent="";var p=el("p","aviso-msg","Não deu para carregar os bolões agora. Atualize a página ou ");var a=el("a",null,"chame no WhatsApp");a.href=wa("Olá! Quais bolões estão abertos?");a.target="_blank";a.rel="noopener";p.appendChild(a);p.appendChild(document.createTextNode("."));lista.appendChild(p);});
 })();
 </script>
@@ -599,6 +616,32 @@ if("IntersectionObserver" in window){
   },{threshold:.6}).observe(bt);
   if(!reduz)setInterval(function(){if(visivel&&!rodando&&!document.hidden)anima();},14000);
 }
+/* palpite do dia: um jogo por dia (lista "palpites" do dados.json), troca à meia-noite de Brasília */
+var PAL=null, diaAtual="", txtSh="", DSEM=["dom","seg","ter","qua","qui","sex","sáb"];
+function hoje(){return new Date(Date.now()-108e5).toISOString().slice(0,10);}
+function z(x){return (x<10?"0":"")+x;}
+function regra(n){if(n.indexOf(1)>=0)return false;var p=0,l={};n.forEach(function(x){if(x%2===0)p++;var k=Math.floor((x-1)/10);l[k]=(l[k]||0)+1;});if(p!==3)return false;for(var k in l)if(l[k]>2)return false;return true;}
+function gera(dia){var s=parseInt(dia.replace(/-/g,""),10)>>>0;function r(){s=(s+0x6D2B79F5)>>>0;var t=s;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;}
+  for(var k=0;k<5000;k++){var n=[];while(n.length<6){var v=1+Math.floor(r()*60);if(n.indexOf(v)<0)n.push(v);}n.sort(function(a,b){return a-b;});if(regra(n))return n;}return [7,13,24,33,41,58];}
+function aplica(){
+  var dia=hoje(); diaAtual=dia;
+  var n=(PAL&&PAL[dia])||gera(dia), p=dia.split("-"), dt=p[2]+"/"+p[1], dw=DSEM[new Date(Date.UTC(+p[0],+p[1]-1,+p[2])).getUTCDay()];
+  var ts=svg.querySelectorAll(".sx-bola text"); for(var i=0;i<ts.length&&i<6;i++)ts[i].textContent=z(n[i]);
+  var pd=svg.querySelector(".sx-pd"); if(pd)pd.textContent="PALPITE DO DIA · "+dt;
+  var sec=document.getElementById("palpite"); if(!sec)return;
+  document.getElementById("pDia").textContent="Mega-Sena · "+dw+", "+dt;
+  var box=document.getElementById("pNum"); box.textContent=""; n.forEach(function(x){var s=document.createElement("span");s.textContent=z(x);box.appendChild(s);});
+  box.setAttribute("aria-label","Dezenas do dia: "+n.map(z).join(", "));
+  txtSh="Palpite do salsicha para hoje ("+dw+", "+dt+") na Mega-Sena: "+n.map(z).join(" · ")+" 🐕 Bolões da Lotérica da Avenida:";
+  sec.hidden=false;
+}
+window.salsichaDados=function(D){PAL=(D&&D.palpites)||null;aplica();};
+if(window.L24D)window.salsichaDados(window.L24D);
+setInterval(function(){if(diaAtual&&hoje()!==diaAtual)aplica();},30000);
+var psh=document.getElementById("pSh");
+if(psh)psh.addEventListener("click",function(){var x={title:"Palpite do salsicha",text:txtSh,url:location.origin+location.pathname+"#palpite"};
+  if(navigator.share){navigator.share(x).catch(function(){});return;}
+  window.open("https://wa.me/?text="+encodeURIComponent(x.text+"\n"+x.url),"_blank","noopener");});
 })();
 </script>
 </body>

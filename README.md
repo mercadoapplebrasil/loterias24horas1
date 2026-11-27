@@ -8,6 +8,7 @@ Tudo fica no `dados.json`:
 
 - `boloes`: um item por bolão: `lot` (mega, quina, loteca, milionaria, dupla, timemania, lotofacil), `concurso`, `quando` (sorteio, ou fim das apostas na Loteca, com `-03:00`), `premio`, `formato`, `cotas` (total), `restam`, `valor` (cota no balcão) e, se houver, `app` (cota no app da Caixa), `nome`, `selo`, `link`.
 - `virada.boloes`: os bolões da Mega da Virada.
+- `palpites`: o palpite do dia do salsicha (data `AAAA-MM-DD` com as 6 dezenas). Troca sozinho à meia-noite; a mesma lista está na planilha, aba "Palpite do Salsicha". Para gerar mais dias: `l24_palpites.py` (não muda os que já existem).
 
 O bolão some sozinho 15 minutos antes de `quando`. As cotas só mudam com o print oficial da Caixa.
 
