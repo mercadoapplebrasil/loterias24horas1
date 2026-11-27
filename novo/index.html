@@ -47,7 +47,7 @@ a{color:var(--verde2)}
 .marca{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;min-width:0}
 .marca img{width:44px;height:44px;border-radius:12px;flex:none;border:1px solid #2E9B5B;display:block}
 .marca b{display:block;font-size:20px;font-weight:800;line-height:1.15}
-.marca small{display:block;font-size:13px;color:#DFF3E5;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.marca small{display:block;font-size:13px;color:#DFF3E5;line-height:1.3}
 .marca div{min-width:0}
 .mbtn{width:48px;height:48px;border-radius:12px;border:1px solid #2E9B5B;background:var(--verde2);color:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none;cursor:pointer}
 nav.menu{display:none;position:absolute;left:0;right:0;top:100%;background:var(--verde2);flex-direction:column;padding:4px 18px 10px;box-shadow:0 14px 28px rgba(0,0,0,.25)}
@@ -166,10 +166,11 @@ section[id],details[id],div[id]{scroll-margin-top:84px}
 .passo .n{grid-row:span 2;width:44px;height:44px;border-radius:50%;background:var(--claro);color:var(--verde2);font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center}
 .passo b{display:block;font-size:19px;margin:2px 0 2px}
 .passo span{font-size:16px;color:var(--cinza);line-height:1.4}
-.confia{display:grid;gap:10px;margin-top:12px}
+.confia{display:grid;gap:10px}
 @media(min-width:760px){.confia{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.confia div{display:flex;gap:10px;align-items:flex-start;background:var(--claro);border-radius:14px;padding:12px 14px;font-size:16px;color:var(--verde3);line-height:1.4}
-.confia svg{width:22px;height:22px;flex:none;margin-top:1px}
+.confia div{display:flex;gap:12px;align-items:flex-start;background:var(--claro);border-radius:16px;padding:14px 16px;font-size:16px;color:var(--verde3);line-height:1.45}
+.confia svg{width:24px;height:24px;flex:none;margin-top:2px}
+.confia b{display:block;font-size:18px;margin-bottom:2px}
 
 /* mascote e rodapé */
 .mascote{display:flex;justify-content:center;padding:34px 18px 0}
@@ -209,7 +210,7 @@ dialog.av::backdrop{background:rgba(8,40,22,.55)}
   <div class="w">
     <a class="marca" href="#topo">
       <img src="/icon-192.png" width="44" height="44" alt="">
-      <div><b>Loterias 24 Horas</b><small>Lotérica da Avenida · Pirassununga/SP</small></div>
+      <div><b>Loterias 24 Horas</b><small>Vilela &amp; Granhani (Lotérica da Avenida) · Pirassununga/SP</small></div>
     </a>
     <button class="mbtn" id="mbtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
       <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
@@ -217,9 +218,9 @@ dialog.av::backdrop{background:rgba(8,40,22,.55)}
     <nav class="menu" id="menu" aria-label="Menu">
       <a href="#boloes">Bolões abertos</a>
       <a href="#virada">Mega da Virada</a>
+      <a href="#seguranca">Compra segura</a>
       <a href="#como">Como comprar</a>
       <a href="https://bolaoloteca.com.br" target="_blank" rel="noopener">Bolão Loteca ↗</a>
-      <a href="https://lotoavenida.com.br" target="_blank" rel="noopener">Lotérica da Avenida ↗</a>
     </nav>
   </div>
 </header>
@@ -227,7 +228,7 @@ dialog.av::backdrop{background:rgba(8,40,22,.55)}
 <div class="hero" id="topo">
   <div class="w">
     <h1>Lotérica da Avenida <small>(Vilela &amp; Granhani)</small></h1>
-    <p class="lema">Escolha o seu bolão e BOA SORTE!</p>
+    <p class="lema">Boa sorte com os bolões disponíveis!</p>
     <a class="prox" id="prox" href="#boloes" hidden>
       <span class="pi" aria-hidden="true">⏰</span>
       <div><b class="pb"></b><span class="ps"></span></div>
@@ -258,17 +259,21 @@ dialog.av::backdrop{background:rgba(8,40,22,.55)}
   </div>
 </section>
 
-<section class="w sec" id="como">
-  <h2>Como comprar</h2>
-  <div class="passos">
-    <div class="passo"><div class="n">1</div><b>Escolha o bolão</b><span>Veja acima o prêmio, o jogo e o valor da cota.</span></div>
-    <div class="passo"><div class="n">2</div><b>Reserve ou compre</b><span>Pelo WhatsApp, no balcão da lotérica ou on-line, na página da Caixa.</span></div>
-    <div class="passo"><div class="n">3</div><b>Acompanhe o resultado</b><span>Depois do sorteio, a gente envia a conferência do bolão para os cotistas.</span></div>
-  </div>
+<section class="w sec" id="seguranca">
+  <h2>Compra segura</h2>
   <div class="confia">
-    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z" fill="#fff" stroke="#0E7A3E" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#0E7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Recibo oficial "Bolão Caixa", impresso no terminal da lotérica, com código de conferência.</span></div>
-    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z" fill="#fff" stroke="#0E7A3E" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#0E7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A compra on-line é feita na página oficial das Loterias Caixa.</span></div>
-    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z" fill="#fff" stroke="#0E7A3E" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#0E7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lotérica credenciada: na Caixa, Vilela &amp; Granhani Ltda Me, código 001926.</span></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z" fill="#fff" stroke="#0E7A3E" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#0E7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Recibo oficial</b>Cada cota física é um recibo "Bolão Caixa", impresso no terminal da lotérica, com código de conferência.</span></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z" fill="#fff" stroke="#0E7A3E" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#0E7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Compra on-line na Caixa</b>A compra pela internet é feita na página oficial das Loterias Caixa. Lá a lotérica aparece como Vilela &amp; Granhani Ltda Me.</span></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z" fill="#fff" stroke="#0E7A3E" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#0E7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Lotérica credenciada</b>Lotérica da Avenida, em Pirassununga/SP. No site da Caixa: Vilela &amp; Granhani Ltda Me, código 001926.</span></div>
+  </div>
+</section>
+
+<section class="w sec" id="como">
+  <h2>Como comprar sua cota</h2>
+  <div class="passos">
+    <div class="passo"><div class="n">1</div><b>Escolha o bolão</b><span>Veja acima os bolões abertos, o prêmio e o valor da cota.</span></div>
+    <div class="passo"><div class="n">2</div><b>Compre pelo WhatsApp ou on-line</b><span>Reserve sua cota pelo WhatsApp ou compre on-line, na página da lotérica no site da Caixa: Vilela &amp; Granhani Ltda Me, código 001926. Também vendemos no balcão.</span></div>
+    <div class="passo"><div class="n">3</div><b>Acompanhe o resultado</b><span>Depois do sorteio, a gente envia a conferência do bolão para os cotistas.</span></div>
   </div>
 </section>
 </main>
@@ -404,6 +409,7 @@ function hora(l){return l.getUTCHours()+"h"+(l.getUTCMinutes()?dd(l.getUTCMinute
 function nomeDe(b){return b.nome||(LOT[b.lot]||{}).n||"";}
 function corDe(b){return (LOT[b.lot]||{}).c||"#0E7A3E";}
 function num(v){return parseFloat(String(v).replace(/[^\d,]/g,"").replace(",","."))||0;}
+function preco(x){return x.app?x.app:x.valor+" + tarifa da Caixa";}
 function apostas(f){return f.replace(/\bjogos\b/g,"apostas").replace(/\bjogo\b/g,"aposta");}
 function wa(msg){return "https://wa.me/"+D.whatsapp+"?text="+encodeURIComponent(msg);}
 function juntar(L){return L.length<2?L.join(""):L.slice(0,-1).join(", ")+" e "+L[L.length-1];}
@@ -430,7 +436,7 @@ function linha(b,ctx){
   else{z.innerHTML=IC_ZAP+"<span>WhatsApp</span>";z.href=wa("Olá! Quero reservar 1 cota do bolão "+nome+" · "+b.formato+" · cota de "+b.valor+".");z.setAttribute("aria-label","Reservar pelo WhatsApp: "+nome+", "+b.formato);}
   ac.appendChild(z);
   if(!esg){var o=el("a","o","On-line");o.href=D.linkCaixa;o.target="_blank";o.rel="noopener";o.setAttribute("aria-label","Comprar on-line na Caixa: "+nome+", "+b.formato);
-    o._alvo={nome:ctx.titulo,preco:b.app||(b.valor+" + tarifa da Caixa"),formato:b.formato,conc:ctx.conc,app:!!b.app};ac.appendChild(o);}
+    o._alvo={nome:ctx.titulo,preco:preco(b),formato:b.formato,conc:ctx.conc,app:!!b.app};ac.appendChild(o);}
   var sh=el("button","s");sh.type="button";sh.innerHTML=IC_SH;sh.setAttribute("aria-label","Compartilhar este bolão");
   sh._sh={title:"Bolão "+nome,text:"Bolão "+nome+" · "+b.formato+" · "+b.cotas+" cotas de "+b.valor+(ctx.quando?" · "+ctx.quando:"")+" · Lotérica da Avenida",url:location.origin+location.pathname+"#b-"+b.id};
   ac.appendChild(sh); r.appendChild(ac);
@@ -504,17 +510,18 @@ function aviso(alvo,ehVirada){
   var A=document.getElementById("avAlvo"), L=document.getElementById("avL"), P=document.getElementById("avP");
   L.textContent=""; A.hidden=true; L.hidden=true;
   if(alvo){
-    P.textContent="O link abre a página da lotérica na Caixa, com todos os bolões. Procure este:";
+    P.textContent="O link abre a página da lotérica com todos os bolões. Procure este:";
     document.getElementById("avA").textContent=alvo.nome+" · "+alvo.preco;
     document.getElementById("avB").textContent=apostas(alvo.formato);
-    document.getElementById("avC").textContent="Concurso "+alvo.conc+(alvo.app?" · valor já com a tarifa da Caixa":"");
+    var ex=[];if(alvo.conc)ex.push("Concurso "+alvo.conc);if(alvo.app)ex.push("valor da cota já com a tarifa da Caixa");
+    var C=document.getElementById("avC");C.textContent=ex.join(" · ");C.hidden=!ex.length;
     A.hidden=false;
   }else if(ehVirada&&D.virada){
-    P.textContent="O link abre a página da lotérica na Caixa, com todos os bolões. Na Mega da Virada, procure pelo jogo e pelo valor da cota:";
-    D.virada.boloes.forEach(function(v){var li=el("li");li.appendChild(el("span",null,apostas(v.formato)));li.appendChild(el("b",null,v.app||v.valor));L.appendChild(li);});
+    P.textContent="O link abre a página da lotérica com todos os bolões. Na Mega da Virada, procure pelo formato e pelo valor da cota:";
+    D.virada.boloes.forEach(function(v){var li=el("li");li.appendChild(el("span",null,apostas(v.formato)));li.appendChild(el("b",null,preco(v)));L.appendChild(li);});
     L.hidden=false;
   }else{
-    P.textContent="O link abre a página da lotérica (Vilela & Granhani) na Caixa, com todos os bolões. Escolha o seu bolão e BOA SORTE!";
+    P.textContent="O link abre a página da lotérica (Vilela & Granhani) com todos os bolões. Escolha o seu bolão e BOA SORTE!";
   }
   av.showModal();
 }
