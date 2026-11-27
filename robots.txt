@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loterias24horas.com.br/sitemap.xml
