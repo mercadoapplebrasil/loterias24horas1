@@ -1,0 +1,65 @@
+# Vigia dos sites da Lotérica da Avenida.
+# - A cada mudança: confere se o dados.json está íntegro (é ele que alimenta os três sites).
+# - De 6 em 6 horas: confere se os três sites estão no ar e servindo o conteúdo certo.
+# Se algo falhar, o GitHub manda e-mail para o dono do repositório.
+name: Vigia dos sites
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dados:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: dados.json íntegro
+        run: |
+          python3 - <<'PY'
+          import json, sys, datetime
+          d = json.load(open("dados.json", encoding="utf-8"))
+          erros = []
+          for campo in ("whatsapp", "linkCaixa", "boloes"):
+              if campo not in d: erros.append(f"falta o campo {campo}")
+          todos = list(d.get("boloes", [])) + list((d.get("virada") or {}).get("boloes", []))
+          ids = [b.get("id") for b in todos]
+          if len(ids) != len(set(ids)): erros.append("há id de bolão repetido")
+          for b in todos:
+              nome = b.get("id", "?")
+              for campo in ("id", "formato", "cotas", "restam", "valor"):
+                  if campo not in b: erros.append(f"{nome}: falta {campo}")
+              if isinstance(b.get("cotas"), int) and isinstance(b.get("restam"), int):
+                  if not 0 <= b["restam"] <= b["cotas"]: erros.append(f"{nome}: restam {b['restam']} fora de 0..{b['cotas']}")
+              else: erros.append(f"{nome}: cotas/restam precisam ser números inteiros")
+              if "quando" in b:
+                  try: datetime.datetime.fromisoformat(b["quando"])
+                  except Exception: erros.append(f"{nome}: data inválida em quando")
+              if not str(b.get("valor", "")).startswith("R$"): erros.append(f"{nome}: valor sem R$")
+          for dia, dz in (d.get("palpites") or {}).items():
+              if len(dz) != 6 or len(set(dz)) != 6 or not all(1 <= int(x) <= 60 for x in dz): erros.append(f"palpite de {dia} inválido")
+          if erros:
+              print("\n".join("ERRO: " + e for e in erros)); sys.exit(1)
+          print(f"dados.json ok: {len(todos)} bolões")
+          PY
+  no-ar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: os três sites respondem
+        run: |
+          falhou=0
+          confere() { # endereço, texto que precisa estar na página
+            corpo=$(curl -sS -L --max-time 30 --retry 2 -w '\n%{http_code}' "$1") || { echo "ERRO: $1 não respondeu"; falhou=1; return; }
+            codigo=$(printf '%s' "$corpo" | tail -n1)
+            if [ "$codigo" != "200" ]; then echo "ERRO: $1 respondeu $codigo"; falhou=1; return; fi
+            if ! printf '%s' "$corpo" | grep -q "$2"; then echo "ERRO: $1 no ar, mas sem o texto esperado ($2)"; falhou=1; return; fi
+            echo "ok: $1"
+          }
+          confere https://loterias24horas.com.br/ "Loterias 24 Horas"
+          confere https://loterias24horas.com.br/dados.json "linkCaixa"
+          confere https://bolaoloteca.com.br/ "Bolão Loteca"
+          confere https://lotoavenida.com.br/ "Lotérica da Avenida"
+          confere http://loterias24horas.com.br/ "Loterias 24 Horas"
+          exit $falhou
